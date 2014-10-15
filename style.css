@@ -1,0 +1,33 @@
+h1{
+    font-size: 50px;
+    font-family: sans-serif Times New Roman;
+}
+
+h2{
+    font-size: 30px;
+}
+
+p  {
+
+}
+
+.name{
+    
+}
+
+#container{
+    padding-top: 3em;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+    text-align: center;
+    color: white;
+}
+
+#description{
+    padding-top: 2em;
+}
+
+body{
+    background-image: url(media/congruent_outline.png);
+}
