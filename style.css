@@ -31,6 +31,12 @@ h2{
 
 #description{
     padding-top: 2em;
+    width: 400px;
+    height: 180px;
+    margin: 30px 50px;
+    background-color: #ffffff;
+    border: 1px solid black;
+    opacity: 0.6;
 }
 
 body{
