@@ -6,7 +6,9 @@ h1{
 h2{
     font-size: 30px;
 }
-
+h3 {
+   color: black;
+}
 #container{
     padding-top: 1em;
     margin-left: auto;
@@ -31,7 +33,10 @@ h2{
 
 #description{
     padding-top: 2em;
-   
+    padding-top: 1em;
+    background-color: grey;
+    border: 1px solid black;
+    opacity: 0.6;
 }
 
 body{
