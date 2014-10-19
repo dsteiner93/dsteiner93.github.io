@@ -25,4 +25,5 @@ function changeTitleColor() {
 function showGame(){
        $("#text").fadeToggle(300);
         setTimeout(function() {$("#board").fadeIn(300);}, 300);
+          $('#gameArea').css("width", 850);
 }
