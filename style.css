@@ -1,6 +1,6 @@
 @font-face {
     font-family: Bubble;
-    src: url(media/JandaManateeSolid.ttf);
+    src: url(media/JandaManateeBubble.ttf);
 }
 
 #title{
@@ -16,6 +16,7 @@ h2{
 h3 {
    color: black;
 }
+
 #container{
     padding-top: 10px;
     margin-left: auto;
