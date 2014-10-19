@@ -29,12 +29,12 @@ h3 {
 }
 
 #start, #mock-up{
-    margin-top: 20px;
+   margin-top: 20px;
    font-size:20px;
    font-family:Verdana,sans-serif;
-   color:#FF3333;
+   color: pink;
    background-color:#FFFFFF;
-   border-color:#FFFFFF;
+   border-color: blue;*/
     cursor: pointer;
     
 }
