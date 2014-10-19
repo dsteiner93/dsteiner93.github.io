@@ -7,6 +7,7 @@ function showRules(){
     $("#members").fadeToggle(200);
     $("#start").fadeToggle(200);
     setTimeout(function(){
+     $("#board").hide();
     $("#gameArea").fadeIn('slow');
     },300);
        return false;
@@ -22,5 +23,6 @@ function changeTitleColor() {
 }
 
 function showGame(){
-       $(".details").fadeToggle(300);
+       $("#text").fadeToggle(300);
+        setTimeout(function() {$("#board").fadeIn(300);}, 300);
 }
