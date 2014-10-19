@@ -34,7 +34,7 @@ h3 {
 }
 
 #description{
-    background-image:url(media/congruent_outline sideway.png);
+    /*background-image:url(media/congruent_outline sideway.png);*/
     width: 500px;
     margin: 0 auto;
 }
@@ -67,6 +67,6 @@ h3{
 }
 
 body{
-    background-image: url(media/congruent_outline.png);
+    background-image: url(media/moulin_@2X.png);
     font-family: 'Indie Flower', cursive;
 }
