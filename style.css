@@ -98,8 +98,7 @@ h3{
 	float: right;
 }
 body{
-    color: pink;
-    opacity: .5;
+    background: pink;
     /*background-image: url(media/moulin_@2X.png);
     font-family: 'Indie Flower', cursive;*/
 }
