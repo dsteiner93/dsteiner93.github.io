@@ -13,7 +13,6 @@ h3 {
     padding-top: 1em;
     margin-left: auto;
     margin-right: auto;
-    width: 300px;
     text-align: center;
     color: white;
 }
@@ -32,8 +31,14 @@ h3 {
 }
 
 #description{
-    background-image: url(media/congruent_outline sideway.png);
-    /*background-size: ih 200px; */
+    background-image:url(media/congruent_outline sideway.png);
+    width: 500px;
+    margin: 0 auto;
+}
+
+iframe{
+    padding: 0;
+    margin: 0;
 }
 
 h3{
