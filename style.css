@@ -33,7 +33,7 @@ h3 {
     
 }
 
-#description{
+#gameArea{
     /*background-image:url(media/congruent_outline sideway.png);*/
     width: 500px;
     margin: 0 auto;
@@ -54,18 +54,25 @@ iframe{
    
 }
 
+.details{
+    
+}
+
 h3{
     color: white;
     padding-top: 0;
     margin-top: 0;
 }
 
-#description #text{
-    margin: 0px;
+#gameArea #text{
+     margin: 0px;
      padding: 10px;
      border: 1px solid black;
      background:rgba(255,255,255,0.05);
-    border-radius: 20px;
+     border-radius: 20px;
+     height: 500px;
+    /*     THIS IS WHAT IS SHOWN AFTER YOU PRESS MOCK UP BUTTON.
+    IT KEEPS THE WHITE BOX. TEXT IS BAD NAME. CHANGE ID NAME*/
 }
 
 body{

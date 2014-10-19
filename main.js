@@ -1,13 +1,13 @@
 
 $( document ).ready( function(){
-     $("#description").hide();
+     $("#gameArea").hide();
      setInterval(function(){changeTitleColor()}, 1000)
 });
-function showGame(){
+function showRules(){
     $("#members").fadeToggle(200);
     $("#start").fadeToggle(200);
     setTimeout(function(){
-        $("#description").fadeIn('slow');
+    $("#gameArea").fadeIn('slow');
     },300);
        return false;
     };
@@ -19,4 +19,8 @@ function changeTitleColor() {
    var rgb = "rgb("+red+","+green+","+blue+")";
               
    $('#title').css("color", rgb)
+}
+
+function showGame(){
+       $(".details").fadeToggle(300);
 }
