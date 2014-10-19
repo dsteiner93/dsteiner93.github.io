@@ -65,7 +65,13 @@ iframe{
 	margin-top: 50px;
 }
 
+#desc{
+    text-align: center;
+    color: blue;
+	
+}
 .details{
+    text-align: left;
     
 }
 
