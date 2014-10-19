@@ -43,7 +43,14 @@ iframe{
     padding: 20px 0 0 0;
     margin: 0;
 }
-
+.menuItem {
+	color: #FFFFFF;
+	font-size:24px;
+	background-color: black;
+	height:75px;
+	width: 150px;
+	margin-top: 50px;
+}
 
 .details{
     
@@ -52,8 +59,9 @@ iframe{
 #board{
     background-color: white;
     opacity: .5;
-    width: 400px;
-    height: 400px;
+    width: 850px;
+    height: 500px;
+	display: inline;
         /*     THIS IS WHAT IS SHOWN AFTER YOU PRESS MOCK UP BUTTON.
     IT KEEPS THE WHITE BOX. dimesions are wrongs. sry*/
 }
@@ -64,15 +72,25 @@ h3{
     margin-top: 0;
 }
 
-#gameArea #playHere{
-     margin: 0px;
+#gameArea{
+     margin-left: auto;
+	 margin-right: auto;
      padding: 10px;
      border: 1px solid black;
      background:rgba(255,255,255,0.05);
      border-radius: 20px;
      height: 500px;
 }
-
+#menu  {
+	width: 240px;
+	height: 500px;
+	float: left;
+}
+#intro {
+	width: 560px;
+	height: 500px;
+	float: right;
+}
 body{
     background-image: url(media/moulin_@2X.png);
     font-family: 'Indie Flower', cursive;
