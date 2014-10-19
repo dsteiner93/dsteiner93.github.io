@@ -7,11 +7,11 @@ function showRules(){
     $("#members").fadeToggle(200);
     $("#start").fadeToggle(200);
     setTimeout(function(){
-     $("#board").hide();
+          $("#board").hide();
+        $("#gameArea").css("height", $("#text").css("height"));
     $("#gameArea").fadeIn('slow');
     },300);
        return false;
-     $("#gameArea").css("height", $("#text").css("height"));
     };
    
 
