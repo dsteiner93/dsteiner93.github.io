@@ -1,9 +1,13 @@
 @font-face {
     font-family: Bubble;
     src: url(media/JandaManateeBubble.ttf);
+    font-family: Solid;
+    src: url(media/JandaManateeSolid.ttf);
 }
 
 #title{
+    font-family: Solid;
+    font-size: 75px;
     position: absolute;
     padding-top: 0px;
     margin: 5px 0px;
