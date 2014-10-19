@@ -18,11 +18,11 @@ h3 {
     color: white;
 }
 
-#start:hover{
+#start:hover, #mock-up:hover{
     color:orange;
 }
 
-#start{
+#start, #mock-up{
     margin-top: 20px;
    font-size:20px;
    font-family:Verdana,sans-serif;
@@ -44,15 +44,6 @@ iframe{
     margin: 0;
 }
 
-#mock-up{
-   font-size:20px;
-   font-family:Verdana,sans-serif;
-   color:#FF3333;
-   background-color:#FFFFFF;
-   border-color:#FFFFFF;
-   border-radius: 3px;
-   
-}
 
 .details{
     
