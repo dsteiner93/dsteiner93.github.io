@@ -24,12 +24,14 @@ h3 {
 }
 
 #start{
+    margin-top: 20px;
    font-size:20px;
    font-family:Verdana,sans-serif;
    color:#FF3333;
    background-color:#FFFFFF;
    border-color:#FFFFFF;
     cursor: pointer;
+    
 }
 
 #description{
