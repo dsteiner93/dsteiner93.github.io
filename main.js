@@ -11,7 +11,9 @@ function showRules(){
     $("#gameArea").fadeIn('slow');
     },300);
        return false;
+     $("#gameArea").css("height", $("#text").css("height"));
     };
+   
 
 /*   Just commenting this out to test it out. We can uncomment later - David
 function changeTitleColor() {
