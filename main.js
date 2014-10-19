@@ -12,7 +12,8 @@ function showRules(){
     },300);
        return false;
     };
-    
+
+/*   Just commenting this out to test it out. We can uncomment later - David
 function changeTitleColor() {
    var red = Math.floor(Math.random() * 255);
    var green = Math.floor(Math.random() * 255);
@@ -20,7 +21,7 @@ function changeTitleColor() {
    var rgb = "rgb("+red+","+green+","+blue+")";
               
    $('#title').css("color", rgb)
-}
+}*/
 
 function showGame(){
        $("#text").fadeToggle(300);
