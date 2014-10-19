@@ -4,8 +4,20 @@
 }
 
 #title{
+    position: absolute;
+    padding-top: 0px;
+    margin: 5px 0px;
+}
+
+#bubble{
     font-family: Bubble, sans-serif;
     font-size: 125px;
+    padding-top: 0px;
+    margin: 5px 0px;
+}
+#solid{
+    font-family: Bubble, sans-serif;
+    font-size: 75px;
     padding-top: 0px;
     margin: 5px 0px;
 }
