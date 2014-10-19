@@ -64,7 +64,8 @@ h3{
     margin: 0px;
      padding: 10px;
      border: 1px solid black;
-     background:rgba(255,255,255,0.1);
+     background:rgba(255,255,255,0.05);
+    border-radius: 20px;
 }
 
 body{
