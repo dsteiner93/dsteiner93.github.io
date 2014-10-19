@@ -32,12 +32,18 @@ h3 {
 }
 
 #description{
-    padding-top: 2em;
     padding-top: 1em;
     background-color: grey;
     border: 1px solid black;
-    opacity: 0.5;
+    opacity: 0.5; 
+}
+
+
+
+h3{
     color: white;
+    padding-top: 0;
+    margin-top: 0;
 }
 
 body{
