@@ -109,6 +109,100 @@
 			return false;
 		}
 		
+				function updateBoard(){
+		/* Iterate through all the groups in the global group list.
+		 * If the group size is >=4, then delete the group from the global
+		 * group list and the board.
+		 */
+			var i;
+			var j;
+			for(i = 0; i < globalGroups.length; i++){
+				if(globalGroups[i].size >= 4){
+					for(j = 0; j < globalGroups[i].elements.length; j++){
+						stage.removeChild(globalGroups[i].elements[j]);
+					}
+				}
+			}
+		}
+		
+		function updateGroups(circle){
+		/* This function is meant to update the groups everytime a block reaches the 
+		 * floor. For a circle in the block it should check all adjacent groups 
+		 * (adjacent groups found using getGroupList()) and check if the group is the 
+		 * same color as it. If it is, add 1 to the group size and add yourself to
+		 * the elements. If no groups are your color, a new group needs to be created.
+		 * IMPORTANT: If two groups of the same color are next to you, the groups need
+		 * to be merged. (Because while they used to be separate groups, you've just
+		 * come in and connected them.)
+		 */
+			var groups = getGroupList(circle);
+			var index;
+			var foundGroup = false;
+			for(index = 0; index < groups.length; index++){
+				if(groups[index].color == circle.color){
+					groups[index].elements[groups[index].elements.length] = circle;
+					groups[index].size = groups.size+1;
+					foundGroup = true;
+				}
+			}
+			if(!foundGroup){
+				//No group to join, make a new one
+				globalGroups[globalGroups.length] = new group(globalCounter++, circle.color, 1, [circle]);
+			}
+		}
+		
+		function getGroupList(circle) {
+		/* This function takes in a circle and returns an array of the IDs of every group
+		 * that the circles above, below, left, and right of it are. Before adding a new group
+		 * to the array, it checks if the id is already present.
+		 * (In simple terms, imagine O is the circle that is input. This function should 
+		 * return an array containing the group ids of the circles A, L, R, and B with no duplicates.)
+		 *         A 
+		 *       L O R 
+		 *         B
+		 */
+			var groups = [];
+			var A = gameGrid[xToArray(circle.x)][yToArray(circle.y+1)];
+			var B = gameGrid[xToArray(circle.x)][yToArray(circle.y-1)];
+			var L = gameGrid[xToArray(circle.x-1)][yToArray(circle.y)];
+			var R = gameGrid[xToArray(circle.x+1)][yToArray(circle.y)];
+			groups[groups.length] = A.circle.group.id;
+			if(!isInGroup(B.circle.group.id, groups)){
+				groups[groups.length] = B.circle.group;
+			}
+			if(!isInGroup(L.circle.group.id, groups)){
+				groups[groups.length] = L.circle.group;			
+			}
+			if(!isInGroup(R.circle.group.id, groups)){
+				groups[groups.length] = R.circle.group;
+			}
+			return groups;
+		}
+		
+		function isInGroup(Id, groups) {
+		/* Checks whether or not the given Id is already in groups 
+		 * to avoid duplicates
+		 */
+			var index;
+			for(index = 0; index < groups.length; index++){
+				if(groups[index].id == Id) return true;
+			}
+			return false;
+		}
+		
+		function mergeGroups(groups){
+		/* Merge two groups
+		 *
+		 */
+		}
+		
+		function group(id, color, size, elements){
+			this.id = id;
+			this.color = color;
+			this.size = size;
+			this.elements = elements;
+		}
+		
 	}
 function xToArray(coord)  { //converts x-coordinate to array index
 	return Math.floor(coord/(2*radius))
