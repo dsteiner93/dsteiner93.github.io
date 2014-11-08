@@ -1,5 +1,8 @@
    var fallInterval = 40; //interval (in ticks) at which the block falls
    var currentBlock;
+   var nextColor1 = generateColor();
+   var nextColor2 = generateColor();
+   var nextBlock;
    var width = 300; //canvas width
    var height = 600; //canvas height
    var radius = 25; //icon radius
@@ -7,10 +10,13 @@
    height - radius, height - radius, height - radius); // an array that keeps track of the height of the blocks at each x-coord
    function init() {
 		var stage = new createjs.Stage("demoCanvas");
+		var blockPreview = new createjs.Stage("blockPreview");
 		var counter = 0;
 		var keyBuffer = 0;
 		currentBlock = generateBlock();
+		nextBlock = generateNext();
 		stage.addChild(currentBlock);
+		blockPreview.addChild(nextBlock);
 		createjs.Ticker.setFPS(30);
 		createjs.Ticker.addEventListener("tick", stage);
 		createjs.Ticker.addEventListener("tick", tick);
@@ -43,8 +49,29 @@
 		function generateBlock()  { //creates a new block of two icons
 			var circle1 = new createjs.Shape();
 			var circle2 = new createjs.Shape();
-			circle1.color = generateColor();
-			circle2.color = generateColor();
+			circle1.color = nextColor1;
+			circle2.color = nextColor2;
+			nextColor1 = generateColor();
+			nextColor2 = generateColor();
+			var block = new createjs.Container();
+			counter = 0;
+			keyBuffer = 0;
+			circle1.graphics.beginFill(circle1.color).drawCircle(0, 0, radius);
+			circle1.x = 0;
+			circle1.y = 0;
+			circle2.graphics.beginFill(circle2.color).drawCircle(0, 0, radius);
+			circle2.x = 0;
+			circle2.y = -50;
+			block.addChild(circle1, circle2);
+			block.x = 175;
+			block.y = 25;
+			return block;
+		}
+		function generateNext() { //just creates the next block for the preview
+			var circle1 = new createjs.Shape();
+			var circle2 = new createjs.Shape();
+			circle1.color = nextColor1;
+			circle2.color = nextColor2;
 			var block = new createjs.Container();
 			counter = 0;
 			keyBuffer = 0;
