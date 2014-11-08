@@ -131,8 +131,8 @@
 				floor[xToArray(block.x)] -= 100;
 				gameGrid[yToArray(block.y)][xToArray(block.x)].setCircle(block.getChildAt(0));  //adds circles to grid
 				gameGrid[yToArray(block.y) - 1][xToArray(block.x)].setCircle(block.getChildAt(1));
-				updateGroups(block.getChild(circle1));
-				updateGroups(block.getChild(circle2));
+				/*updateGroups(block.getChild(circle1));
+				updateGroups(block.getChild(circle2));*/
 				currentBlock = generateBlock();
 				speedUp();
 				stage.addChild(currentBlock);
