@@ -14,9 +14,9 @@
 		var counter = 0;
 		var keyBuffer = 0;
 		currentBlock = generateBlock();
-		nextBlock = generateNext();
+		//nextBlock = generateNext();
 		stage.addChild(currentBlock);
-		blockPreview.addChild(nextBlock);
+		//blockPreview.addChild(nextBlock);
 		createjs.Ticker.setFPS(30);
 		createjs.Ticker.addEventListener("tick", stage);
 		createjs.Ticker.addEventListener("tick", tick);
