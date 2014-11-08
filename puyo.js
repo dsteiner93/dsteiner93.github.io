@@ -6,12 +6,54 @@
    var height = 600; //canvas height
    var radius = 25; //icon radius
    var numberOfBlocksUsed = 0;
+   var gameGrid; //accessed with [ycoord][xcoord]
+   var spaceId = 0; //to id each space
    var floor = new Array(height - radius, height - radius, height - radius, 
    height - radius, height - radius, height - radius); // an array that keeps track of the height of the blocks at each x-coord
+  
+   var pair = function (block)  { //this structure will keep track of the orientation for rotations
+		this.block = block;
+		this.pivot = block.getChildAt(0);
+		this.rotatable = block.getChildAt(1);
+		this.orientation = 12; //orientation based on clock face, starts at 12 O'clock
+		function rotateClockwise()  {
+			
+		}
+		function rotateCounterClockwise()  {
+		
+		}
+	}
+	var space = function ()  { //each space keeps track of occupancy and occupant
+		var thisSpace = this;
+		thisSpace.occupied = false;
+		thisSpace.id = spaceId;
+		spaceId++;
+		thisSpace.circle = null;
+		thisSpace.getCircle = function getCircle()  {
+			return thisSpace.circle;
+		}
+		thisSpace.setCircle = function setCircle(newCircle)  {
+			thisSpace.circle = newCircle;
+			thisSpace.occupied = true;
+		}
+		thisSpace.isOccupied = function isOccupied()  {
+			return thisSpace.occupied;
+		}
+	}
+	
    function init() {
 		var stage = new createjs.Stage("demoCanvas");
 		var counter = 0;
 		var keyBuffer = 0;
+		gameGrid = new Array(6);
+		for (var i = 0; i < 12; i++)  { //this loop creates the grid
+			gameGrid[i] = new Array(12);
+		}
+		for (var i = 0; i < 12; i++)  {
+			for (var j = 0; j < 6; j++)  { //populates grid with spaces
+				gameGrid[i][j] = new space();
+			}
+		}
 		currentBlock = generateBlock();
 		stage.addChild(currentBlock);
 		createjs.Ticker.setFPS(30);
@@ -87,6 +129,8 @@
 			}
 			else  {
 				floor[xToArray(block.x)] -= 100;
+				gameGrid[yToArray(block.y)][xToArray(block.x)].setCircle(block.getChildAt(0));  //adds circles to grid
+				gameGrid[yToArray(block.y) - 1][xToArray(block.x)].setCircle(block.getChildAt(1));
 				updateGroups(block.getChild(circle1));
 				updateGroups(block.getChild(circle2));
 				currentBlock = generateBlock();
