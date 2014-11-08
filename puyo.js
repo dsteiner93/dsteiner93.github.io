@@ -135,8 +135,8 @@
 				gameGrid[yToArray(block.y) - 1][xToArray(block.x)].setCircle(block.getChildAt(1));
 				
 				updateGroups(block.getChildAt(0));
-				updateGroups(block.getChildAt(1));
-				updateBoard();
+				//updateGroups(block.getChildAt(1));
+				//updateBoard();
 				
 				currentBlock = generateBlock();
 				speedUp();
