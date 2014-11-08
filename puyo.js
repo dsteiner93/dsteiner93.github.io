@@ -46,16 +46,24 @@
 			var block = new createjs.Container();
 			counter = 0;
 			keyBuffer = 0;
-			circle1.graphics.beginFill("red").drawCircle(0, 0, radius);
+			circle1.graphics.beginFill(generateColor()).drawCircle(0, 0, radius);
 			circle1.x = 0;
 			circle1.y = 0;
-			circle2.graphics.beginFill("red").drawCircle(0, 0, radius);
+			circle2.graphics.beginFill(generateColor()).drawCircle(0, 0, radius);
 			circle2.x = 0;
 			circle2.y = -50;
 			block.addChild(circle1, circle2);
 			block.x = 175;
 			block.y = 25;
 			return block;
+		}
+		function generateColor() {
+			var x = Math.random();
+			if(x<.20) return "green";
+			else if(x<.40) return "pink";
+			else if(x<.60) return "blue";
+			else if(x<.80) return "purple";
+			else return "orange";
 		}
 		function fallingBlock(block)  {
 			if (counter == fallInterval)  {
