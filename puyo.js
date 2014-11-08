@@ -1,0 +1,98 @@
+   var fallInterval = 40;
+   var currentBlock;
+   var width = 300;
+   var height = 600;
+   var radius = 25;
+   var floor = new Array(height - radius, height - radius, height - radius, height - radius, height - radius, height - radius);
+   function init() {
+		var stage = new createjs.Stage("demoCanvas");
+		var counter = 0;
+		var keyBuffer = 0;
+		currentBlock = generateBlock();
+		stage.addChild(currentBlock);
+		createjs.Ticker.setFPS(30);
+		createjs.Ticker.addEventListener("tick", stage);
+		createjs.Ticker.addEventListener("tick", tick);
+		function tick(event) {
+			fallingBlock(currentBlock);
+			if (keyBuffer == 0)  {
+				if (key.isPressed('left') && !hitFloor(currentBlock)) {
+					moveLeft(currentBlock);
+					keyBuffer++;
+					stage.update();
+				}
+				if (key.isPressed('right') && !hitFloor(currentBlock)) {
+					moveRight(currentBlock);
+					keyBuffer++;
+					stage.update();
+				}
+				if (key.isPressed('down')) {
+					moveDown(currentBlock);
+					keyBuffer++;
+					stage.update();
+				}
+			}
+			if (keyBuffer != 0)  {
+				keyBuffer++;
+				if (keyBuffer == 6)  {
+					keyBuffer = 0;
+				}
+			}	
+		}
+		function generateBlock()  {
+			var circle1 = new createjs.Shape();
+			var circle2 = new createjs.Shape();
+			var block = new createjs.Container();
+			counter = 0;
+			keyBuffer = 0;
+			circle1.graphics.beginFill("red").drawCircle(0, 0, radius);
+			circle1.x = 0;
+			circle1.y = 0;
+			circle2.graphics.beginFill("red").drawCircle(0, 0, radius);
+			circle2.x = 0;
+			circle2.y = -50;
+			block.addChild(circle1, circle2);
+			block.x = 175;
+			block.y = 25;
+			return block;
+		}
+		function fallingBlock(block)  {
+			if (counter == fallInterval)  {
+				moveDown(block);	
+			}
+			counter++;
+		}
+		function moveDown(block)  {
+			if (!hitFloor(block))  {
+				block.y = block.y + 50;
+				counter = 0;
+				stage.update();
+			}
+			else  {
+				floor[xToArray(block.x)] -= 100
+				currentBlock = generateBlock();
+				stage.addChild(currentBlock);
+			}
+		}
+		function moveLeft(block)  {
+			if (block.x > 25)  {
+				block.x -= 50;
+			}
+		}
+		function moveRight(block)  {
+			if (block.x < width - radius)  {
+				block.x += 50;
+			}
+		}
+		function hitFloor(block)  {
+			if (block.y >= floor[xToArray(block.x)]) {
+				return true;
+			}
+			return false;
+		}
+		
+	}
+function xToArray(coord)  {
+	return Math.floor(coord/(2*radius))
+}
+	
