@@ -215,10 +215,10 @@
 		 *         B
 		 */
 			var groups = [];
-			var A = gameGrid[yToArray(circle.y+1)][xToArray(circle.x)];
-			var B = gameGrid[yToArray(circle.y-1)][xToArray(circle.x)];
-			var L = gameGrid[yToArray(circle.y)][xToArray(circle.x-1)];
-			var R = gameGrid[yToArray(circle.y)][xToArray(circle.x+1)];
+			var A = gameGrid[yToArray(circle.y+1)][xToArray(circle.x)].getCircle();
+			var B = gameGrid[yToArray(circle.y-1)][xToArray(circle.x)].getCircle();
+			var L = gameGrid[yToArray(circle.y)][xToArray(circle.x-1)].getCircle();
+			var R = gameGrid[yToArray(circle.y)][xToArray(circle.x+1)].getCircle();
 			
 			groups[groups.length] = A.circle.group;
 			if(!isInGroup(B.circle.group.id, groups)){
