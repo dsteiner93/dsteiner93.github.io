@@ -86,7 +86,9 @@
 				stage.update();
 			}
 			else  {
-				floor[xToArray(block.x)] -= 100
+				floor[xToArray(block.x)] -= 100;
+				updateGroups(block.getChild(circle1));
+				updateGroups(block.getChild(circle2));
 				currentBlock = generateBlock();
 				speedUp();
 				stage.addChild(currentBlock);
@@ -204,7 +206,12 @@
 		}
 		
 	}
+	
 function xToArray(coord)  { //converts x-coordinate to array index
+	return Math.floor(coord/(2*radius))
+}
+
+function yToArray(coord)  { //converts y-coordinate to array index
 	return Math.floor(coord/(2*radius))
 }
 
