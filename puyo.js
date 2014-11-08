@@ -1,7 +1,7 @@
    var fallInterval = 40; //interval (in ticks) at which the block falls
    var currentBlock;
-   var nextColor1 = generateColor();
-   var nextColor2 = generateColor();
+   //var nextColor1 = generateColor();
+   //var nextColor2 = generateColor();
    var width = 300; //canvas width
    var height = 600; //canvas height
    var radius = 25; //icon radius
@@ -9,7 +9,6 @@
    height - radius, height - radius, height - radius); // an array that keeps track of the height of the blocks at each x-coord
    function init() {
 		var stage = new createjs.Stage("demoCanvas");
-		//var blockPreview = new createjs.Stage("blockPreview");
 		var counter = 0;
 		var keyBuffer = 0;
 		currentBlock = generateBlock();
@@ -46,10 +45,10 @@
 		function generateBlock()  { //creates a new block of two icons
 			var circle1 = new createjs.Shape();
 			var circle2 = new createjs.Shape();
-			circle1.color = nextColor1;
-			circle2.color = nextColor2;
-			nextColor1 = generateColor();
-			nextColor2 = generateColor();
+			circle1.color = generateColor();
+			circle2.color = generateColor();
+			//nextColor1 = generateColor();
+			//nextColor2 = generateColor();
 			var block = new createjs.Container();
 			counter = 0;
 			keyBuffer = 0;
