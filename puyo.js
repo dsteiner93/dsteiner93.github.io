@@ -133,9 +133,11 @@
 				floor[xToArray(block.x)] -= 100;
 				gameGrid[yToArray(block.y)][xToArray(block.x)].setCircle(block.getChildAt(0));  //adds circles to grid
 				gameGrid[yToArray(block.y) - 1][xToArray(block.x)].setCircle(block.getChildAt(1));
-				/*updateGroups(block.getChild(circle1));
-				updateGroups(block.getChild(circle2));
-				updateBoard();*/
+				
+				updateGroups(block.getChildAt(0));
+				updateGroups(block.getChildAt(1));
+				updateBoard();
+				
 				currentBlock = generateBlock();
 				speedUp();
 				stage.addChild(currentBlock);
@@ -213,10 +215,10 @@
 		 *         B
 		 */
 			var groups = [];
-			var A = gameGrid[xToArray(circle.x)][yToArray(circle.y+1)];
-			var B = gameGrid[xToArray(circle.x)][yToArray(circle.y-1)];
-			var L = gameGrid[xToArray(circle.x-1)][yToArray(circle.y)];
-			var R = gameGrid[xToArray(circle.x+1)][yToArray(circle.y)];
+			var A = gameGrid[yToArray(circle.y+1)][xToArray(circle.x)];
+			var B = gameGrid[yToArray(circle.y-1)][xToArray(circle.x)];
+			var L = gameGrid[yToArray(circle.y)][xToArray(circle.x-1)];
+			var R = gameGrid[yToArray(circle.y)][xToArray(circle.x+1)];
 			
 			groups[groups.length] = A.circle.group;
 			if(!isInGroup(B.circle.group.id, groups)){
