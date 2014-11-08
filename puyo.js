@@ -5,6 +5,7 @@
    var width = 300; //canvas width
    var height = 600; //canvas height
    var radius = 25; //icon radius
+   var numberOfBlocksUsed = 0;
    var floor = new Array(height - radius, height - radius, height - radius, 
    height - radius, height - radius, height - radius); // an array that keeps track of the height of the blocks at each x-coord
    function init() {
@@ -61,6 +62,7 @@
 			block.addChild(circle1, circle2);
 			block.x = 175;
 			block.y = 25;
+			numberOfBlocksUsed++;
 			return block;
 		}
 		function generateColor() {
@@ -86,6 +88,7 @@
 			else  {
 				floor[xToArray(block.x)] -= 100
 				currentBlock = generateBlock();
+				speedUp();
 				stage.addChild(currentBlock);
 			}
 		}
@@ -110,4 +113,15 @@
 function xToArray(coord)  { //converts x-coordinate to array index
 	return Math.floor(coord/(2*radius))
 }
-	
+
+function speedUp(){
+             console.log(numberOfBlocksUsed);
+             if (numberOfBlocksUsed % 4 == 0 && fallInterval > 5) { //speed increases every 4th block
+                          fallInterval = fallInterval -5;
+             }
+             if (numberOfBlocksUsed % 50 == 0 && fallInterval > 3) { // 50th block reaches max speed
+                          fallInterval = fallInterval - 1;
+             }
+             console.log(fallInterval);
+             
+}	
