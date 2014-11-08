@@ -1,9 +1,10 @@
-   var fallInterval = 40;
+   var fallInterval = 40; //interval (in ticks) at which the block falls
    var currentBlock;
-   var width = 300;
-   var height = 600;
-   var radius = 25;
-   var floor = new Array(height - radius, height - radius, height - radius, height - radius, height - radius, height - radius);
+   var width = 300; //canvas width
+   var height = 600; //canvas height
+   var radius = 25; //icon radius
+   var floor = new Array(height - radius, height - radius, height - radius, 
+   height - radius, height - radius, height - radius); // an array that keeps track of the height of the blocks at each x-coord
    function init() {
 		var stage = new createjs.Stage("demoCanvas");
 		var counter = 0;
@@ -32,14 +33,14 @@
 					stage.update();
 				}
 			}
-			if (keyBuffer != 0)  {
+			if (keyBuffer != 0)  { //prevents keypress from registering too quickly: it's a bit clunky right now
 				keyBuffer++;
 				if (keyBuffer == 6)  {
 					keyBuffer = 0;
 				}
 			}	
 		}
-		function generateBlock()  {
+		function generateBlock()  { //creates a new block of two icons
 			var circle1 = new createjs.Shape();
 			var circle2 = new createjs.Shape();
 			var block = new createjs.Container();
@@ -84,7 +85,7 @@
 				block.x += 50;
 			}
 		}
-		function hitFloor(block)  {
+		function hitFloor(block)  { //checks if  block has reached the bottom 
 			if (block.y >= floor[xToArray(block.x)]) {
 				return true;
 			}
@@ -92,7 +93,7 @@
 		}
 		
 	}
-function xToArray(coord)  {
+function xToArray(coord)  { //converts x-coordinate to array index
 	return Math.floor(coord/(2*radius))
 }
 	
