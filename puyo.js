@@ -7,6 +7,8 @@
    var radius = 25; //icon radius
    var numberOfBlocksUsed = 0;
    var gameGrid; //accessed with [ycoord][xcoord]
+   var globalGroups;
+   var globalCounter;
    var spaceId = 0; //to id each space
    var floor = new Array(height - radius, height - radius, height - radius, 
    height - radius, height - radius, height - radius); // an array that keeps track of the height of the blocks at each x-coord
@@ -155,7 +157,7 @@
 			return false;
 		}
 		
-				function updateBoard(){
+		function updateBoard() {
 		/* Iterate through all the groups in the global group list.
 		 * If the group size is >=4, then delete the group from the global
 		 * group list and the board.
@@ -167,6 +169,7 @@
 					for(j = 0; j < globalGroups[i].elements.length; j++){
 						stage.removeChild(globalGroups[i].elements[j]);
 					}
+					globalGroups[i] = null;
 				}
 			}
 		}
@@ -212,7 +215,8 @@
 			var B = gameGrid[xToArray(circle.x)][yToArray(circle.y-1)];
 			var L = gameGrid[xToArray(circle.x-1)][yToArray(circle.y)];
 			var R = gameGrid[xToArray(circle.x+1)][yToArray(circle.y)];
-			groups[groups.length] = A.circle.group.id;
+			
+			groups[groups.length] = A.circle.group;
 			if(!isInGroup(B.circle.group.id, groups)){
 				groups[groups.length] = B.circle.group;
 			}
