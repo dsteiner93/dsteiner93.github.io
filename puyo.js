@@ -43,13 +43,15 @@
 		function generateBlock()  { //creates a new block of two icons
 			var circle1 = new createjs.Shape();
 			var circle2 = new createjs.Shape();
+			circle1.color = generateColor();
+			circle2.color = generateColor();
 			var block = new createjs.Container();
 			counter = 0;
 			keyBuffer = 0;
-			circle1.graphics.beginFill(generateColor()).drawCircle(0, 0, radius);
+			circle1.graphics.beginFill(circle1.color).drawCircle(0, 0, radius);
 			circle1.x = 0;
 			circle1.y = 0;
-			circle2.graphics.beginFill(generateColor()).drawCircle(0, 0, radius);
+			circle2.graphics.beginFill(circle2.color).drawCircle(0, 0, radius);
 			circle2.x = 0;
 			circle2.y = -50;
 			block.addChild(circle1, circle2);
