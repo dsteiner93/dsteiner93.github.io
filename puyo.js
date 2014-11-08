@@ -7,8 +7,8 @@
    var radius = 25; //icon radius
    var numberOfBlocksUsed = 0;
    var gameGrid; //accessed with [ycoord][xcoord]
-   var globalGroups;
-   var globalCounter;
+   var globalGroups = [];
+   var globalCounter = 0;
    var spaceId = 0; //to id each space
    var floor = new Array(height - radius, height - radius, height - radius, 
    height - radius, height - radius, height - radius); // an array that keeps track of the height of the blocks at each x-coord
@@ -134,7 +134,8 @@
 				gameGrid[yToArray(block.y)][xToArray(block.x)].setCircle(block.getChildAt(0));  //adds circles to grid
 				gameGrid[yToArray(block.y) - 1][xToArray(block.x)].setCircle(block.getChildAt(1));
 				/*updateGroups(block.getChild(circle1));
-				updateGroups(block.getChild(circle2));*/
+				updateGroups(block.getChild(circle2));
+				updateBoard();*/
 				currentBlock = generateBlock();
 				speedUp();
 				stage.addChild(currentBlock);
@@ -169,7 +170,8 @@
 					for(j = 0; j < globalGroups[i].elements.length; j++){
 						stage.removeChild(globalGroups[i].elements[j]);
 					}
-					globalGroups[i] = null;
+					//Delete the item from the array
+					globalGroups.splice(i, 1);
 				}
 			}
 		}
