@@ -254,7 +254,7 @@
 				stage.addChild(currentBlock);
 			}
 		}
-f		unction moveLeft(block)  {
+		function moveLeft(block)  {
 			moveLR(block, -50);
 		}
 		function moveRight(block)  {
