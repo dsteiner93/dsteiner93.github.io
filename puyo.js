@@ -227,30 +227,36 @@
 			if(yToArray(circle.y+1)<=11){
 				if(gameGrid[yToArray(circle.y+1)][xToArray(circle.x)].isOccupied()){
 					var A = gameGrid[yToArray(circle.y+1)][xToArray(circle.x)].getCircle();
-					groups[groups.length] = A.group;
+					if(A.group != null) groups[groups.length] = A.group;
 				}
 			}
 			if(yToArray(circle.y-1)>=0){
 				if(gameGrid[yToArray(circle.y-1)][xToArray(circle.x)].isOccupied()){
 					var B = gameGrid[yToArray(circle.y-1)][xToArray(circle.x)].getCircle();
-					if(!isInGroup(B.group.id, groups)){
-						groups[groups.length] = B.group;
+					if(B.group != null){
+						if(!isInGroup(B.group.id, groups)){
+							groups[groups.length] = B.group;
+						}
 					}
 				}
 			}
 			if(xToArray(circle.x-1)>=0){
 				if(gameGrid[yToArray(circle.y)][xToArray(circle.x-1)].isOccupied()){
 					var L = gameGrid[yToArray(circle.y)][xToArray(circle.x-1)].getCircle();
-					if(!isInGroup(L.group.id, groups)){
-						groups[groups.length] = L.group;			
+					if(L.group != null){
+						if(!isInGroup(L.group.id, groups)){
+							groups[groups.length] = L.group;			
+						}
 					}
 				}
 			}
 			if(xToArray(circle.x+1<=5)){
 				if(gameGrid[yToArray(circle.y)][xToArray(circle.x+1)].isOccupied()){
 					var R = gameGrid[yToArray(circle.y)][xToArray(circle.x+1)].getCircle();
-					if(!isInGroup(R.group.id, groups)){
-						groups[groups.length] = R.group;
+					if(R.group != null){
+						if(!isInGroup(R.group.id, groups)){
+							groups[groups.length] = R.group;
+						}
 					}
 				}
 			}
