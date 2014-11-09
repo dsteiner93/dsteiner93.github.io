@@ -334,8 +334,8 @@
 						gameGrid[z][x].circle.y = arrayToY(q);
 						gameGrid[q][x].setCircle(gameGrid[z][x].circle); //if you found one, swap it in
 						gameGrid[q][x].circle.group = null;
+						//gameGrid[z][x].circle.parent.removeChild(gameGrid[z][x]);
 						gameGrid[z][x] = new space();
-						gameGrid[z][x].circle.parent.removeChild(gameGrid[z][x]);
 					}
 				}
 			}
