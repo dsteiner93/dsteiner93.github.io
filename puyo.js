@@ -151,10 +151,8 @@
 				gameGrid[yToArray(block.y)][xToArray(block.x)].setCircle(block.getChildAt(0));  //adds circles to grid
 				gameGrid[yToArray(block.y) - 1][xToArray(block.x)].setCircle(block.getChildAt(1));
 				
-				
-				
-				//updateGroups(block.getChildAt(0));
-				//updateGroups(block.getChildAt(1));
+				updateGroups(block.getChildAt(0));
+				updateGroups(block.getChildAt(1));
 				//updateBoard();
 				
 				currentBlock = generateBlock();
@@ -236,15 +234,17 @@
 		 *         B
 		 */
 			var groups = [];
-			if(yToArray(circle.y+1)<=11){
-				if(gameGrid[yToArray(circle.y+1)][xToArray(circle.x)].isOccupied()){
-					var A = gameGrid[yToArray(circle.y+1)][xToArray(circle.x)].getCircle();
+			var x = circle.specialX;
+			var y = circle.specialY;
+			if(yToArray(y+1)<=11){
+				if(gameGrid[yToArray(y)+1][xToArray(x)].isOccupied()){
+					var A = gameGrid[yToArray(y)+1][xToArray(x)].getCircle();
 					if(A.group != null) groups[groups.length] = A.group;
 				}
 			}
-			if(yToArray(circle.y-1)>=0){
-				if(gameGrid[yToArray(circle.y-1)][xToArray(circle.x)].isOccupied()){
-					var B = gameGrid[yToArray(circle.y-1)][xToArray(circle.x)].getCircle();
+			if(yToArray(y-1)>=0){
+				if(gameGrid[yToArray(y)-1][xToArray(x)].isOccupied()){
+					var B = gameGrid[yToArray(y)-1][xToArray(x)].getCircle();
 					if(B.group != null){
 						if(!isInGroup(B.group.id, groups)){
 							groups[groups.length] = B.group;
@@ -252,9 +252,9 @@
 					}
 				}
 			}
-			if(xToArray(circle.x-1)>=0){
-				if(gameGrid[yToArray(circle.y)][xToArray(circle.x-1)].isOccupied()){
-					var L = gameGrid[yToArray(circle.y)][xToArray(circle.x-1)].getCircle();
+			if(xToArray(x-1)>=0){
+				if(gameGrid[yToArray(y)][xToArray(x)-1].isOccupied()){
+					var L = gameGrid[yToArray(y)][xToArray(x)-1].getCircle();
 					if(L.group != null){
 						if(!isInGroup(L.group.id, groups)){
 							groups[groups.length] = L.group;			
@@ -262,9 +262,9 @@
 					}
 				}
 			}
-			if(xToArray(circle.x+1<=5)){
-				if(gameGrid[yToArray(circle.y)][xToArray(circle.x+1)].isOccupied()){
-					var R = gameGrid[yToArray(circle.y)][xToArray(circle.x+1)].getCircle();
+			if(xToArray(x+1<=5)){
+				if(gameGrid[yToArray(y)][xToArray(x)+1].isOccupied()){
+					var R = gameGrid[yToArray(y)][xToArray(x)+1].getCircle();
 					if(R.group != null){
 						if(!isInGroup(R.group.id, groups)){
 							groups[groups.length] = R.group;
