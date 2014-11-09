@@ -236,13 +236,13 @@
 			var groups = [];
 			var x = circle.specialX;
 			var y = circle.specialY;
-			if(yToArray(y+1)<=11){
+			if(yToArray(y)+1<=11){
 				if(gameGrid[yToArray(y)+1][xToArray(x)].isOccupied()){
 					var A = gameGrid[yToArray(y)+1][xToArray(x)].getCircle();
 					if(A.group != null) groups[groups.length] = A.group;
 				}
 			}
-			if(yToArray(y-1)>=0){
+			if(yToArray(y)-1>=0){
 				if(gameGrid[yToArray(y)-1][xToArray(x)].isOccupied()){
 					var B = gameGrid[yToArray(y)-1][xToArray(x)].getCircle();
 					if(B.group != null){
@@ -252,7 +252,7 @@
 					}
 				}
 			}
-			if(xToArray(x-1)>=0){
+			if(xToArray(x)-1>=0){
 				if(gameGrid[yToArray(y)][xToArray(x)-1].isOccupied()){
 					var L = gameGrid[yToArray(y)][xToArray(x)-1].getCircle();
 					if(L.group != null){
@@ -262,7 +262,7 @@
 					}
 				}
 			}
-			if(xToArray(x+1<=5)){
+			if(xToArray(x)+1<=5)){
 				if(gameGrid[yToArray(y)][xToArray(x)+1].isOccupied()){
 					var R = gameGrid[yToArray(y)][xToArray(x)+1].getCircle();
 					if(R.group != null){
