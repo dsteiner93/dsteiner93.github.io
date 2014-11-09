@@ -262,7 +262,7 @@
 					}
 				}
 			}
-			if(xToArray(x)+1<=5)){
+			if(xToArray(x)+1<=5){
 				if(gameGrid[yToArray(y)][xToArray(x)+1].isOccupied()){
 					var R = gameGrid[yToArray(y)][xToArray(x)+1].getCircle();
 					if(R.group != null){
