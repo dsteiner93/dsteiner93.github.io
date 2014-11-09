@@ -310,6 +310,8 @@
 							if(gameGrid[q][x].occupied){
 								gameGrid[q][x].getCircle().specialY = gameGrid[q][x].getCircle().specialY + 1;
 								gameGrid[q][x].getCircle().y += 50;
+								gameGrid[q+1][x] = gameGrid[q][x].circle;
+								gameGrid[q][x] = new space();
 							}
 						}
 					
