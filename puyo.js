@@ -306,18 +306,14 @@
 						globalGroups[i].elements[j].parent.removeChild(globalGroups[i].elements[j]);
 						
 						var q;
-						for(q = 0; q < y; q++){
+						for(q = y-1; q > 0; q--){
 							if(gameGrid[q][x].occupied){
 								gameGrid[q][x].getCircle().specialY = gameGrid[q][x].getCircle().specialY + 1;
 								gameGrid[q][x].getCircle().y += 50;
-								gameGrid[q+1][x] = gameGrid[q][x].circle;
+								gameGrid[q+1][x].setCircle(gameGrid[q][x].circle);
 								gameGrid[q][x] = new space();
 							}
 						}
-					
-				
-						
-						//stage.removeChild(globalGroups[i].elements[j].parent);
 					}
 					//Delete the item from the array of groups
 					globalGroups.splice(i, 1);
