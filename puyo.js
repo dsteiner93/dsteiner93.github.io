@@ -104,7 +104,9 @@
 			circle1.specialY = 0;
 			circle2.graphics.beginFill(circle2.color).drawCircle(0, 0, radius);
 			circle2.x = 0;
+			circle2.specialX = 0;
 			circle2.y = -50;
+			circle2.specialY = 0;
 			block.addChild(circle1, circle2);
 			block.x = 175;
 			block.y = 25;
@@ -143,8 +145,8 @@
 				var y = block.y;
 				block.getChildAt(0).specialX = x;
 				block.getChildAt(0).specialY = y;
-				//block.getChildAt(1).x = x;
-				//block.getChildAt(1).y = y-50;
+				block.getChildAt(1).specialX = x;
+				block.getChildAt(1).specialY = y-50;
 
 				gameGrid[yToArray(block.y)][xToArray(block.x)].setCircle(block.getChildAt(0));  //adds circles to grid
 				gameGrid[yToArray(block.y) - 1][xToArray(block.x)].setCircle(block.getChildAt(1));
