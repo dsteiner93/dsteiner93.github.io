@@ -333,8 +333,8 @@
 						gameGrid[z][x].circle.specialY = q;
 						gameGrid[z][x].circle.y += 2*radius*(q-z);
 						gameGrid[q][x].setCircle(gameGrid[z][x].circle); //if you found one, swap it in
+						gameGrid[q][x].circle.group = null;
 						updateGroups(gameGrid[q][x].circle);
-						//gameGrid[q][x].circle.group = null;
 						gameGrid[z][x] = new space();
 					}
 				}
