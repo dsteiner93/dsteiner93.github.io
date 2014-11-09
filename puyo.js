@@ -208,13 +208,41 @@
 				//child circles without making the block go invisible
 				var x = block.x;
 				var y = block.y;
-				block.getChildAt(0).specialX = x;
-				block.getChildAt(0).specialY = y;
-				block.getChildAt(1).specialX = x;
-				block.getChildAt(1).specialY = y-50;
-
-				gameGrid[yToArray(block.y)][xToArray(block.x)].setCircle(block.getChildAt(0));  //adds circles to grid
-				gameGrid[yToArray(block.y) - 1][xToArray(block.x)].setCircle(block.getChildAt(1));
+				var child1x = block.getChildAt(0).x + x;
+				var child1y = block.getChildAt(0).y + y;
+				var child2x = block.getChildAt(1).x + x;
+				var child2y = block.getChildAt(1).y + y;
+				
+				if (currentPair.orientation == 12 || currentPair.orientation == 6)  {
+					gameGrid[yToArray(child1y)][xToArray(child1x)].setCircle(block.getChildAt(0));
+					gameGrid[yToArray(child2y)][xToArray(child2x)].setCircle(block.getChildAt(1));
+				}
+				else if (currentPair.orientation == 9 || currentPair.orientation == 3)  {
+					if (child1y == height - radius && child2y == height - radius)  {
+						gameGrid[yToArray(child1y)][xToArray(child1x)].setCircle(block.getChildAt(0));
+						gameGrid[yToArray(child2y)][xToArray(child2x)].setCircle(block.getChildAt(1));
+					}
+					else  {
+						while (!gameGrid[yToArray(child1y) + 1][xToArray(child1x)].occupied)  {
+							child1y += 50;
+							block.getChildAt(0).y += 50;
+							if (child1y == height - radius)  
+								break;		
+						}
+						while (!gameGrid[yToArray(child2y) + 1][xToArray(child2x)].occupied)  {
+							child2y += 50;
+							block.getChildAt(1).y += 50;
+							if (child2y == height - radius)  
+								break;
+						}
+					}
+					gameGrid[yToArray(child1y)][xToArray(child1x)].setCircle(block.getChildAt(0));
+					gameGrid[yToArray(child2y)][xToArray(child2x)].setCircle(block.getChildAt(1));
+				}
+				block.getChildAt(0).specialX = block.getChildAt(0).x + x;
+				block.getChildAt(0).specialY = block.getChildAt(0).y + y;
+				block.getChildAt(1).specialX = block.getChildAt(1).x + x;
+				block.getChildAt(1).specialY = block.getChildAt(1).y + y;
 				
 				updateGroups(block.getChildAt(0));
 				updateGroups(block.getChildAt(1));
@@ -226,21 +254,38 @@
 				stage.addChild(currentBlock);
 			}
 		}
-		function moveLeft(block)  {
-			if (block.x > 25)  {
-				block.x -= 50;
-			}
+f		unction moveLeft(block)  {
+			moveLR(block, -50);
 		}
 		function moveRight(block)  {
-			if (block.x < width - radius)  {
-				block.x += 50;
+			moveLR(block, 50);
+		}
+		function moveLR(block, deltaX) { //horizontal movement and collision detection
+			var child1x = block.getChildAt(0).x + block.x;
+			var child1y = block.getChildAt(0).y + block.y;
+			var child2x = block.getChildAt(1).x + block.x;
+			var child2y = block.getChildAt(1).y + block.y;
+			if (child1y == 25 )  { //allows us to move the pair at the very top
+				if(child1x + deltaX >= radius && child1x + deltaX <= width - radius && !gameGrid[yToArray(child1y)][xToArray(child1x + deltaX)].occupied)
+					block.x += deltaX;
+			}
+			else if (child1x + deltaX >= radius && child1x + deltaX <= width - radius && child2x + deltaX >= radius && child2x + deltaX <= width - radius)  {
+				if (!gameGrid[yToArray(child1y)][xToArray(child1x + deltaX)].occupied && !gameGrid[yToArray(child2y)][xToArray(child2x + deltaX)].occupied)
+					block.x += deltaX;
 			}
 		}
 		function hitFloor(block)  { //checks if  block has reached the bottom 
-			if (block.y >= floor[xToArray(block.x)]) {
+			var child1x = block.getChildAt(0).x + block.x;
+			var child1y = block.getChildAt(0).y + block.y;
+			var child2x = block.getChildAt(1).x + block.x;
+			var child2y = block.getChildAt(1).y + block.y;
+			if (child1y == height - radius || child2y == height - radius) {
 				return true;
 			}
-			return false;
+			else if (gameGrid[yToArray(child1y + 50)][xToArray(child1x)].occupied || gameGrid[yToArray(child2y + 50)][xToArray(child2x)].occupied)
+				return true;
+			else
+				return false;
 		}
 		
 		function updateBoard() {
