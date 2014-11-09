@@ -311,12 +311,15 @@
 								gameGrid[q][x].getCircle().specialY = gameGrid[q][x].getCircle().specialY + 1;
 								gameGrid[q][x].getCircle().y += 50;
 								gameGrid[q+1][x].setCircle(gameGrid[q][x].circle);
+								updateGroups(gameGrid[q+1][x].circle);
 								gameGrid[q][x] = new space();
 							}
 						}
+						
 					}
 					//Delete the item from the array of groups
 					globalGroups.splice(i, 1);
+					updateBoard();
 				}
 			}
 		}
