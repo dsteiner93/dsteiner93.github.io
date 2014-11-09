@@ -20,7 +20,7 @@
 		thisPair.rotatable = block.getChildAt(1);
 		thisPair.orientation = 12; //orientation based on clock face, starts at 12 O'clock
 		thisPair.rotateCW = function rotateCW()  {
-			if (thisPair.orientation == 12 && thisPair.block.x + 50 <= width - radius)  {
+			if (thisPair.orientation == 12 && thisPair.block.x + thisPair.rotatble.x + 50 <= width - radius)  {
 				thisPair.rotatable.x += 50;
 				thisPair.rotatable.y += 50;
 				thisPair.orientation = 3;
@@ -30,7 +30,7 @@
 				thisPair.rotatable.y += 50;
 				thisPair.orientation = 6;
 			}
-			else if (thisPair.orientation == 6 && thisPair.block.x - 50 >= width - radius)  {
+			else if (thisPair.orientation == 6 && thisPair.block.x + thisPair.rotatable.x - 50 >= width - radius)  {
 				thisPair.rotatable.x -= 50;
 				thisPair.rotatable.y -= 50;
 				thisPair.orientation = 9;
@@ -44,7 +44,7 @@
 			console.log(thisPair.rotatable.y);
 		}
 		thisPair.rotateCCW = function rotateCCW()  {
-			if (thisPair.orientation == 12 && thisPair.block.x - 50 >= width - radius)  {
+			if (thisPair.orientation == 12 && thisPair.block.x + thisPair.rotatable.x - 50 >= width - radius)  {
 				thisPair.rotatable.x -= 50;
 				thisPair.rotatable.y += 50;
 				thisPair.orientation = 9;
@@ -54,7 +54,7 @@
 				thisPair.rotatable.y += 50;
 				thisPair.orientation = 6;
 			}
-			else if (thisPair.orientation == 6 && thisPair.block.x + 50 <= width - radius)  {
+			else if (thisPair.orientation == 6 && thisPair.block.x + thisPair.rotatable.x + 50 <= width - radius)  {
 				thisPair.rotatable.x += 50;
 				thisPair.rotatable.y -= 50;
 				thisPair.orientation = 3;
