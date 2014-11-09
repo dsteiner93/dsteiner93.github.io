@@ -142,13 +142,13 @@
 				block.getChildAt(0).x = x;
 				block.getChildAt(0).y = y;
 				block.getChildAt(1).x = x;
-				block.getChildAt(1).y = y-50;
-				var replaceBlock = new createjs.Container();
-				replaceBlock.addChild(block.getChildAt(0), block.getChildAt(1));
-				replaceBlock.x = x;
-				replaceBlock.y = y;
-				stage.addChild(replaceBlock);
-				stage.update();
+				//block.getChildAt(1).y = y-50;
+				//var replaceBlock = new createjs.Container();
+				//replaceBlock.addChild(block.getChildAt(0), block.getChildAt(1));
+				//replaceBlock.x = x;
+				//replaceBlock.y = y;
+				//stage.addChild(replaceBlock);
+				//stage.update();
 				gameGrid[yToArray(block.y)][xToArray(block.x)].setCircle(block.getChildAt(0));  //adds circles to grid
 				gameGrid[yToArray(block.y) - 1][xToArray(block.x)].setCircle(block.getChildAt(1));
 				
