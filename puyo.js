@@ -18,11 +18,53 @@
 		this.pivot = block.getChildAt(0);
 		this.rotatable = block.getChildAt(1);
 		this.orientation = 12; //orientation based on clock face, starts at 12 O'clock
-		function rotateClockwise()  {
-			
+		thisPair.rotateCW = function rotateCW()  {
+			if (thisPair.orientation == 12)  {
+				thisPair.rotatable.x += 50;
+				thisPair.rotatable.y += 50;
+				thisPair.orientation = 3;
+			}
+			else if (thisPair.orientation == 3)  {
+				thisPair.rotatable.x -= 50;
+				thisPair.rotatable.y += 50;
+				thisPair.orientation = 6;
+			}
+			else if (thisPair.orientation == 6)  {
+				thisPair.rotatable.x -= 50;
+				thisPair.rotatable.y -= 50;
+				thisPair.orientation = 9;
+			}
+			else if (thisPair.orientation == 9)  {
+				thisPair.rotatable.x += 50;
+				thisPair.rotatable.y -= 50;
+				thisPair.orientation = 12;
+			}
+			console.log(thisPair.rotatable.x);
+			console.log(thisPair.rotatable.y);
 		}
-		function rotateCounterClockwise()  {
-		
+		thisPair.rotateCCW = function rotateCCW()  {
+			if (thisPair.orientation == 12)  {
+				thisPair.rotatable.x -= 50;
+				thisPair.rotatable.y += 50;
+				thisPair.orientation = 9;
+			}
+			else if (thisPair.orientation == 9)  {
+				thisPair.rotatable.x += 50;
+				thisPair.rotatable.y += 50;
+				thisPair.orientation = 6;
+			}
+			else if (thisPair.orientation == 6)  {
+				thisPair.rotatable.x += 50;
+				thisPair.rotatable.y -= 50;
+				thisPair.orientation = 3;
+			}
+			else if (thisPair.orientation == 3)  {
+				thisPair.rotatable.x -= 50;
+				thisPair.rotatable.y -= 50;
+				thisPair.orientation = 12;
+			}
+			console.log(thisPair.rotatable.x);
+			console.log(thisPair.rotatable.y);
 		}
 	}
 	var space = function ()  { //each space keeps track of occupancy and occupant
@@ -47,6 +89,7 @@
 		var stage = new createjs.Stage("demoCanvas");
 		var counter = 0;
 		var keyBuffer = 0;
+		var rotateBuffer = 0;
 		gameGrid = new Array(6);
 		for (var i = 0; i < 12; i++)  { //this loop creates the grid
 			gameGrid[i] = new Array(12);
@@ -57,6 +100,7 @@
 			}
 		}
 		currentBlock = generateBlock();
+		currentPair = new pair(currentBlock);
 		stage.addChild(currentBlock);
 		createjs.Ticker.setFPS(30);
 		createjs.Ticker.addEventListener("tick", stage);
@@ -80,12 +124,32 @@
 					stage.update();
 				}
 			}
+			if (rotateBuffer == 0)  {
+				if (key.isPressed('x'))  {
+					currentPair.rotateCCW();
+					console.log('x pressed');
+					rotateBuffer++;
+					stage.update();
+				}
+				if (key.isPressed('z'))  {
+					currentPair.rotateCW();
+					console.log('z pressed');
+					rotateBuffer++;
+					stage.update();
+				}
+			}
 			if (keyBuffer != 0)  { //prevents keypress from registering too quickly: it's a bit clunky right now
 				keyBuffer++;
 				if (keyBuffer == 6)  {
 					keyBuffer = 0;
 				}
-			}	
+			}
+			if (rotateBuffer != 0)  {
+				rotateBuffer++;
+				if (rotateBuffer == 8)  {
+					rotateBuffer = 0;
+				}
+			}
 		}
 		function generateBlock()  { //creates a new block of two icons
 			var circle1 = new createjs.Shape();
@@ -156,6 +220,7 @@
 				updateBoard();
 				
 				currentBlock = generateBlock();
+				currentPair = new pair(currentBlock);
 				speedUp();
 				stage.addChild(currentBlock);
 			}
