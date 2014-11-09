@@ -134,17 +134,17 @@
 				/* SUPER IMPORTANT TODO:
 				 * Need to make sure each circle has the proper coordinates here. The values I'm assigning here aren't accurate if there's a rotation
 				 */
-				/*block.getChildAt(0).x = block.x;
+				block.getChildAt(0).x = block.x;
 				block.getChildAt(0).y = block.y;
 				block.getChildAt(1).x = block.x;
-				block.getChildAt(1).y = block.y-50;*/
+				block.getChildAt(1).y = block.y-50;
 				gameGrid[yToArray(block.y)][xToArray(block.x)].setCircle(block.getChildAt(0));  //adds circles to grid
 				gameGrid[yToArray(block.y) - 1][xToArray(block.x)].setCircle(block.getChildAt(1));
 				
 				//updateGroups(block.getChildAt(0));
 				//updateGroups(block.getChildAt(1));
 				//updateBoard();
-				
+				stage.update();
 				currentBlock = generateBlock();
 				speedUp();
 				stage.addChild(currentBlock);
