@@ -137,11 +137,17 @@
 				 */
 				//Can't edit these without making them disappear. Need to figure out how to edit a block's
 				//child circles without making the block go invisible
-				block.getChildAt(0).x = block.x;
-				block.getChildAt(0).y = block.y;
-				block.getChildAt(1).x = block.x;
-				block.getChildAt(1).y = block.y-50;
-				stage.addChild(block);
+				var x = block.x;
+				var y = block.y;
+				block.getChildAt(0).x = x;
+				block.getChildAt(0).y = y;
+				block.getChildAt(1).x = x;
+				block.getChildAt(1).y = y-50;
+				var replaceBlock = new createjs.Container();
+				replaceBlock.addChild(block.getChildAt(0), block.getChildAt(1));
+				replaceBlock.x = x;
+				replaceBlock.y = y;
+				stage.addChild(replaceBlock);
 				stage.update();
 				gameGrid[yToArray(block.y)][xToArray(block.x)].setCircle(block.getChildAt(0));  //adds circles to grid
 				gameGrid[yToArray(block.y) - 1][xToArray(block.x)].setCircle(block.getChildAt(1));
