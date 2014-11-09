@@ -1,78 +1,110 @@
 @font-face {
-    font-family: Bubble;
-    src: url(media/JandaManateeBubble.ttf);
+font-family:Bubble;
+src:url(media/JandaManateeBubble.ttf);
 }
 
-#title{
-    padding-top: 0px;
-    padding-bottom: 15px;
-    margin: 5px 0px;
+#title {
+padding-top:0;
+padding-bottom:15px;
+margin:5px 0;
 }
 
-#bubble{
-    font-family: Bubble, sans-serif;
-    font-size: 80px;
-    padding-top: 0px;
-    margin: 5px 0px;
+#bubble {
+font-family:Bubble, sans-serif;
+font-size:80px;
+padding-top:0;
+margin:5px 0;
 }
 
-#container{
-    padding-top: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    color: blue;
+nav {
+width:35%;
+float:left;
+padding:10px;
 }
 
-#start:hover, #mock-up:hover{
-    color:orange;
+#nav2 {
+float: left;
+width: 35%;
+padding:10px;
+}
+
+#container {
+float:left;
+padding-top:10px;
+margin-left:auto;
+margin-right:auto;
+text-align:center;
+color:blue;
+width:30%;
+}
+
+#start:hover,#mock-up:hover {
+color:orange;
 }
 
 .menuItem {
-	color: #FFFFFF;
-	font-size:24px;
-	background-color: black;
-	height:75px;
-	width: 150px;
-	margin-top: 50px;
-}
-   
-h3{
-    color: white;
-    padding-top: 0;
-    margin-top: 0;
+color:#FFF;
+font-size:24px;
+background-color:#000;
+height:75px;
+width:150px;
+margin-top:50px;
 }
 
-#gameArea{
-     margin-left: auto;
-     margin-right: auto;
-     background:rgba(255,255,255,0.05);
-     height: 600px;
-     width: 300px;
+h3 {
+color:#FFF;
+padding-top:0;
+margin-top:0;
 }
 
-#demoCanvas{
-    padding: 0px;
-    margin: 0px;
-    background-color: red;
-    width: 300px;
-    height: 600px;
+#gameArea {
+margin-left:auto;
+margin-right:auto;
+background:rgba(255,255,255,0.05);
+width:300px;
 }
 
-body{
-    background: #FFE1FF;
+#demoCanvas {
+background-color:red;
+width:300px;
+height:600px;
+margin:0;
+padding:0;
 }
 
-		#center{
-			 margin-left: auto;
-	    		 margin-right: auto;
-	    		 width: 300px;
-			 padding: 0;
-			 margin: 0px;
-			 
-		}
-		*{
-		   
-		    padding: 0;
-		    margin: 0;
-		}
+body {
+background:#FFE1FF;
+}
+
+#center {
+width:300px;
+margin:0;
+padding:0;
+}
+
+* {
+margin:0;
+padding:0;
+}
+
+.menu {
+margin-top:50px;
+text-align:center;
+width:150px;
+font-family:Bubble, sans-serif;
+font-size:20px;
+color:blue;
+padding:10px;
+}
+
+#menubox {
+float:right;
+}
+
+#menubox2 {
+width:150px;
+}
+
+#reset{
+padding-top: 50px;
+}
