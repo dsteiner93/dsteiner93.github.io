@@ -314,7 +314,8 @@
 						var x = globalGroups[i].elements[j].specialX;
 						var y = globalGroups[i].elements[j].specialY;
 						gameGrid[y][x] = new space();
-						stage.removeChild(globalGroups[i].elements[j].parent);
+						globalGroups[i].elements[j].parent.removeChild(globalGroups[i].elements[j]);
+						//stage.removeChild(globalGroups[i].elements[j].parent);
 					}
 					//Delete the item from the array of groups
 					globalGroups.splice(i, 1);
