@@ -334,6 +334,7 @@
 			var foundGroup = false;
 			for(index = 0; index < groups.length; index++){
 				if(groups[index].color == circle.color){
+					circle.group = groups[index];
 					groups[index].elements[groups[index].elements.length] = circle;
 					groups[index].size = groups[index].size+1;
 					foundGroup = true;
@@ -360,6 +361,7 @@
 			var groups = [];
 			var x = circle.specialX;
 			var y = circle.specialY;
+			//A and B are actually reversed (A is below, B is above)
 			if(y+1<=11){
 				if(gameGrid[y+1][x].isOccupied()){
 					var A = gameGrid[y+1][x].getCircle();
