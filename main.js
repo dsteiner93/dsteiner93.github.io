@@ -1,7 +1,12 @@
+var timer;
+var currentTime = 0;
+
 $(document).ready(function() {
     $("#gameArea").hide();
     $("#demoCanvas").hide();
     $("#center").hide();
+    $("#menubox").hide();
+    $('#nav2').hide();
     //setInterval(function(){changeTitleColor()}, 1000)
 });
 
@@ -21,8 +26,21 @@ function showCanvas() {
         $("#center").fadeIn('slow');
         $("#demoCanvas").fadeIn('slow');
         $( "#bubble" ).toggle( "scale" );
+          $("#menubox").fadeIn(400);
+          $("#menubox").fadeIn(400);
+           $("#nav2").fadeIn(400);
+          startTimer();
     }, 300);
 };
+
+function startTimer(){
+     timer = setInterval(function(){
+           document.getElementById("time").innerHTML =  currentTime;
+           currentTime++;
+          }, 1000);
+}
+
+
 
 
 
@@ -35,4 +53,10 @@ function showCanvas() {
 //   var rgb = "rgb("+red+","+green+","+blue+")";
 //              
 //   $('#title').css("color", rgb)
+//}
+
+//function showGame(){
+//       $("#text").fadeToggle(300);
+//        setTimeout(function() {$("#board").fadeIn(300);}, 300);
+//      $('#gameArea').css("width", 850);
 //}
