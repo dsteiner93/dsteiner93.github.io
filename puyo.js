@@ -99,7 +99,9 @@
 			keyBuffer = 0;
 			circle1.graphics.beginFill(circle1.color).drawCircle(0, 0, radius);
 			circle1.x = 0;
+			circle.specialX = 0;
 			circle1.y = 0;
+			circle.specialY = 0;
 			circle2.graphics.beginFill(circle2.color).drawCircle(0, 0, radius);
 			circle2.x = 0;
 			circle2.y = -50;
@@ -139,16 +141,11 @@
 				//child circles without making the block go invisible
 				var x = block.x;
 				var y = block.y;
-				block.getChildAt(0).x = x;
-				block.getChildAt(0).y = y;
-				block.getChildAt(1).x = x;
+				block.getChildAt(0).specialX = x;
+				block.getChildAt(0).specialY = y;
+				//block.getChildAt(1).x = x;
 				//block.getChildAt(1).y = y-50;
-				//var replaceBlock = new createjs.Container();
-				//replaceBlock.addChild(block.getChildAt(0), block.getChildAt(1));
-				//replaceBlock.x = x;
-				//replaceBlock.y = y;
-				//stage.addChild(replaceBlock);
-				//stage.update();
+
 				gameGrid[yToArray(block.y)][xToArray(block.x)].setCircle(block.getChildAt(0));  //adds circles to grid
 				gameGrid[yToArray(block.y) - 1][xToArray(block.x)].setCircle(block.getChildAt(1));
 				
