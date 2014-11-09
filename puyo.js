@@ -99,9 +99,9 @@
 			keyBuffer = 0;
 			circle1.graphics.beginFill(circle1.color).drawCircle(0, 0, radius);
 			circle1.x = 0;
-			circle.specialX = 0;
+			circle1.specialX = 0;
 			circle1.y = 0;
-			circle.specialY = 0;
+			circle1.specialY = 0;
 			circle2.graphics.beginFill(circle2.color).drawCircle(0, 0, radius);
 			circle2.x = 0;
 			circle2.y = -50;
