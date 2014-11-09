@@ -442,6 +442,7 @@
 				mergedEls[mergedEls.length] = group1.elements[i];
 			}
 			for(i = 0; i<group2.elements.length; i++){
+				group2.elements[i].group = group1;
 				mergedEls[mergedEls.length] = group2.elements[i];
 			}
 			group1.size = size;
