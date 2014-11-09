@@ -215,12 +215,20 @@
 				
 				if (currentPair.orientation == 12 || currentPair.orientation == 6)  {
 					gameGrid[yToArray(child1y)][xToArray(child1x)].setCircle(block.getChildAt(0));
+					block.getChildAt(0).specialY = yToArray(child1y);
+					block.getChildAt(0).specialX = xToArray(child1x);
 					gameGrid[yToArray(child2y)][xToArray(child2x)].setCircle(block.getChildAt(1));
+					block.getChildAt(1).specialY = yToArray(child2y);
+					block.getChildAt(1).specialX = xToArray(child2x);
 				}
 				else if (currentPair.orientation == 9 || currentPair.orientation == 3)  {
 					if (child1y == height - radius && child2y == height - radius)  {
 						gameGrid[yToArray(child1y)][xToArray(child1x)].setCircle(block.getChildAt(0));
+						block.getChildAt(0).specialY = yToArray(child1y);
+						block.getChildAt(0).specialX = xToArray(child1x);
 						gameGrid[yToArray(child2y)][xToArray(child2x)].setCircle(block.getChildAt(1));
+						block.getChildAt(1).specialY = yToArray(child2y);
+						block.getChildAt(1).specialX = xToArray(child2x);
 					}
 					else  {
 						while (!gameGrid[yToArray(child1y) + 1][xToArray(child1x)].occupied)  {
@@ -237,12 +245,17 @@
 						}
 					}
 					gameGrid[yToArray(child1y)][xToArray(child1x)].setCircle(block.getChildAt(0));
+					block.getChildAt(0).specialY = yToArray(child1y);
+					block.getChildAt(0).specialX = xToArray(child1x);
 					gameGrid[yToArray(child2y)][xToArray(child2x)].setCircle(block.getChildAt(1));
+					block.getChildAt(1).specialY = yToArray(child2y);
+					block.getChildAt(1).specialX = xToArray(child2x);
 				}
-				block.getChildAt(0).specialX = block.getChildAt(0).x + x;
+				
+				/*block.getChildAt(0).specialX = block.getChildAt(0).x + x;
 				block.getChildAt(0).specialY = block.getChildAt(0).y + y;
 				block.getChildAt(1).specialX = block.getChildAt(1).x + x;
-				block.getChildAt(1).specialY = block.getChildAt(1).y + y;
+				block.getChildAt(1).specialY = block.getChildAt(1).y + y;*/
 				
 				updateGroups(block.getChildAt(0));
 				updateGroups(block.getChildAt(1));
@@ -347,15 +360,15 @@
 			var groups = [];
 			var x = circle.specialX;
 			var y = circle.specialY;
-			if(yToArray(y)+1<=11){
-				if(gameGrid[yToArray(y)+1][xToArray(x)].isOccupied()){
-					var A = gameGrid[yToArray(y)+1][xToArray(x)].getCircle();
+			if(y+1<=11){
+				if(gameGrid[y+1][x].isOccupied()){
+					var A = gameGrid[y+1][x].getCircle();
 					if(A.group != null) groups[groups.length] = A.group;
 				}
 			}
-			if(yToArray(y)-1>=0){
-				if(gameGrid[yToArray(y)-1][xToArray(x)].isOccupied()){
-					var B = gameGrid[yToArray(y)-1][xToArray(x)].getCircle();
+			if(y-1>=0){
+				if(gameGrid[y-1][x].isOccupied()){
+					var B = gameGrid[y-1][x].getCircle();
 					if(B.group != null){
 						if(!isInGroup(B.group.id, groups)){
 							groups[groups.length] = B.group;
@@ -363,9 +376,9 @@
 					}
 				}
 			}
-			if(xToArray(x)-1>=0){
-				if(gameGrid[yToArray(y)][xToArray(x)-1].isOccupied()){
-					var L = gameGrid[yToArray(y)][xToArray(x)-1].getCircle();
+			if(x-1>=0){
+				if(gameGrid[y][x-1].isOccupied()){
+					var L = gameGrid[y][x-1].getCircle();
 					if(L.group != null){
 						if(!isInGroup(L.group.id, groups)){
 							groups[groups.length] = L.group;			
@@ -373,9 +386,9 @@
 					}
 				}
 			}
-			if(xToArray(x)+1<=5){
-				if(gameGrid[yToArray(y)][xToArray(x)+1].isOccupied()){
-					var R = gameGrid[yToArray(y)][xToArray(x)+1].getCircle();
+			if(x+1<=5){
+				if(gameGrid[y][x+1].isOccupied()){
+					var R = gameGrid[y][x+1].getCircle();
 					if(R.group != null){
 						if(!isInGroup(R.group.id, groups)){
 							groups[groups.length] = R.group;
