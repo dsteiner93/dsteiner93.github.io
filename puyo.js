@@ -309,7 +309,7 @@
 						for(q = 0; q < y; q++){
 							if(gameGrid[q][x].occupied){
 								gameGrid[q][x].getCircle().specialY = gameGrid[q][x].getCircle().specialY + 1;
-								gameGrid[q][x].getCircle().parent.getChild(gameGrid[q][x].circle).y += 50;
+								gameGrid[q][x].getCircle().y += 50;
 							}
 						}
 					
