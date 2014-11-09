@@ -311,6 +311,7 @@
 			for(i = 0; i < globalGroups.length; i++){
 				if(globalGroups[i].size >= 4){
 					for(j = 0; j < globalGroups[i].elements.length; j++){
+						gameGrid[i][j] = new space();
 						stage.removeChild(globalGroups[i].elements[j]);
 					}
 					//Delete the item from the array of groups
