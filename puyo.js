@@ -446,7 +446,7 @@
 			}
 			group1.size = size;
 			group1.elements = mergedEls;
-			delete group2;
+			group2 = null;
 		}
 		
 		function group(id, color, size, elements){
