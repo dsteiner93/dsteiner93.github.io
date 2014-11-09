@@ -211,7 +211,7 @@
 			for(index = 0; index < groups.length; index++){
 				if(groups[index].color == circle.color){
 					groups[index].elements[groups[index].elements.length] = circle;
-					groups[index].size = groups.size+1;
+					groups[index].size = groups[index].size+1;
 					foundGroup = true;
 				}
 			}
