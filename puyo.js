@@ -153,7 +153,7 @@
 				
 				updateGroups(block.getChildAt(0));
 				updateGroups(block.getChildAt(1));
-				//updateBoard();
+				updateBoard();
 				
 				currentBlock = generateBlock();
 				speedUp();
