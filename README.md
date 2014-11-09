@@ -1,10 +1,5 @@
 TODO
 ====================
-Current status:
-
-David: I have been working on implementing the feature where four contiguous blocks disappear. This is nearly done, I just need to implement the merge function and actually debug the part where it actually removes the circles from the canvas. (So the changes will be visible.)
-
-====================
 
 -Implement rotations
 
@@ -17,5 +12,13 @@ David: I have been working on implementing the feature where four contiguous blo
 -Add score features
 
 -Make it look prettier 
+
+====================
+CURRENT STATUSES
+
+David: I have been working on implementing the feature where four contiguous blocks disappear. This is nearly done, I just need to implement the merge function and actually debug the part where it actually removes the circles from the canvas. (So the changes will be visible.)
+
+
+
 
 
