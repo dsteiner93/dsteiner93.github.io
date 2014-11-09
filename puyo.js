@@ -248,7 +248,7 @@
 				
 				updateGroups(block.getChildAt(0));
 				updateGroups(block.getChildAt(1));
-				updateBoard();
+				updateBoard(0);
 				
 				currentBlock = generateBlock();
 				currentPair = new pair(currentBlock);
@@ -290,7 +290,7 @@
 				return false;
 		}
 		
-		function updateBoard() {
+		function updateBoard(changed) {
 		/* Iterate through all the groups in the global group list.
 		 * If the group size is >=4, then delete the group from the global
 		 * group list and the board.
@@ -299,6 +299,7 @@
 			var j;
 			for(i = 0; i < globalGroups.length; i++){
 				if(globalGroups[i].size >= 4){
+					changed=1;
 					for(j = 0; j < globalGroups[i].elements.length; j++){
 						var x = globalGroups[i].elements[j].specialX;
 						var y = globalGroups[i].elements[j].specialY;
@@ -311,6 +312,7 @@
 								gameGrid[q][x].getCircle().specialY = gameGrid[q][x].getCircle().specialY + 1;
 								gameGrid[q][x].getCircle().y += 50;
 								gameGrid[q+1][x].setCircle(gameGrid[q][x].circle);
+								updateGroups(gameGrid[q+1][x].circle);
 								gameGrid[q][x] = new space();
 							}
 						}
@@ -319,6 +321,7 @@
 					globalGroups.splice(i, 1);
 				}
 			}
+			if(changed==1) updateBoard(0); //If a group was deleted, we'll need to update the board again
 		}
 		
 		function updateGroups(circle){
