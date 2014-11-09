@@ -330,7 +330,7 @@
 		 * come in and connected them.)
 		 */
 			var groups = getGroupList(circle);
-			groups = mergeGroups(groups);
+			groups = mergeGroups(groups, circle.color);
 			var index;
 			var foundGroup = false;
 			for(index = 0; index < groups.length; index++){
@@ -413,7 +413,7 @@
 			return false;
 		}
 		
-		function mergeGroups(groups){
+		function mergeGroups(groups, color){
 		/* Go through all adjacent groups and merge the ones with the same color.
 		 *
 		 */
@@ -421,7 +421,7 @@
 			var j;
 			for(i = 0; i<groups.length; i++){
 				for(j = i+1; j<groups.length; j++){
-					if(groups[i].color == groups[j].color){
+					if(groups[i].color == groups[j].color && groups[i].color == color){
 						mergeTwo(groups[i], groups[j]); //The merged group goes in i
 						groups.splice(j, 1);	//Delete j since it was merged with i
 						j--; //Decrement j since we've just deleted the jth position from the array
