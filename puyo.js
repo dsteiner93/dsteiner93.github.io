@@ -297,31 +297,45 @@
 		 */
 			var i;
 			var j;
-			for(i = 0; i < globalGroups.length; i++){
+			for(i = 0; i < globalGroups.length; i++){ //for each group, check if >=4
 				if(globalGroups[i].size >= 4){
 					changed=1;
-					for(j = 0; j < globalGroups[i].elements.length; j++){
+					for(j = 0; j < globalGroups[i].elements.length; j++){ //delete every element in the group
 						var x = globalGroups[i].elements[j].specialX;
 						var y = globalGroups[i].elements[j].specialY;
 						gameGrid[y][x] = new space();
 						globalGroups[i].elements[j].parent.removeChild(globalGroups[i].elements[j]);
-						
-						var q;
-						for(q = y-1; q > 0; q--){
-							if(gameGrid[q][x].occupied){
-								gameGrid[q][x].getCircle().specialY = gameGrid[q][x].getCircle().specialY + 1;
-								gameGrid[q][x].getCircle().y += 50;
-								gameGrid[q+1][x].setCircle(gameGrid[q][x].circle);
-								updateGroups(gameGrid[q+1][x].circle);
-								gameGrid[q][x] = new space();
-							}
-						}
 					}
 					//Delete the item from the array of groups
 					globalGroups.splice(i, 1);
 				}
 			}
-			if(changed==1) updateBoard(0); //If a group was deleted, we'll need to update the board again
+			if(changed==1) condenseColumns(); //If a group was deleted, we'll need to update the board again
+		}
+		
+		function condenseColumns() { //
+			var q;
+			var x;
+			for(x = 0; x<=5; x++){ //for each column
+				condenseColumn(x);
+			}
+		}
+		
+		function condenseColumn(x) {
+			var q;
+			for(q = 11; q>=0; q--){
+				if(!gameGrid[q][x].occupied && q>0){ //if space is empty
+					var z = q-1;
+					while(!gameGrid[z][x].occupied && z>0){ //look up for the next non-empty
+						z--;
+					}
+					if(z>0){
+						gameGrid[q][x].circle.color = gameGrid[z][x].circle.color; //if you found one, swap it in
+						gameGrid[q][x].circle.group = null;
+						gameGrid[z][x] = new space();
+					}
+				}
+			}
 		}
 		
 		function updateGroups(circle){
