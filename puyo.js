@@ -252,7 +252,7 @@
 				
 				currentBlock = generateBlock();
 				currentPair = new pair(currentBlock);
-				speedUp();
+				//speedUp(); uncomment this later
 				stage.addChild(currentBlock);
 			}
 		}
@@ -318,6 +318,7 @@
 			for(x = 0; x<=5; x++){ //for each column
 				condenseColumn(x);
 			}
+			updateBoard(0);
 		}
 		
 		function condenseColumn(x) {
@@ -332,6 +333,7 @@
 						gameGrid[z][x].circle.specialY = q;
 						gameGrid[z][x].circle.y += 2*radius*(q-z);
 						gameGrid[q][x].setCircle(gameGrid[z][x].circle); //if you found one, swap it in
+						updateGroups(gameGrid[q][x].circle);
 						//gameGrid[q][x].circle.group = null;
 						gameGrid[z][x] = new space();
 					}
