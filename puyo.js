@@ -200,7 +200,9 @@
 			}
 			if(!foundGroup){
 				//No group to join, make a new one
-				globalGroups[globalGroups.length] = new group(globalCounter++, circle.color, 1, [circle]);
+				var newGroup = new group(globalCounter++, circle.color, 1, [circle]);
+				globalGroups[globalGroups.length] = newGroup;
+				circle.group = newGroup;
 			}
 		}
 		
@@ -220,15 +222,15 @@
 			var L = gameGrid[yToArray(circle.y)][xToArray(circle.x-1)].getCircle();
 			var R = gameGrid[yToArray(circle.y)][xToArray(circle.x+1)].getCircle();
 			
-			groups[groups.length] = A.circle.group;
-			if(!isInGroup(B.circle.group.id, groups)){
-				groups[groups.length] = B.circle.group;
+			groups[groups.length] = A.group;
+			if(!isInGroup(B.group.id, groups)){
+				groups[groups.length] = B.group;
 			}
-			if(!isInGroup(L.circle.group.id, groups)){
-				groups[groups.length] = L.circle.group;			
+			if(!isInGroup(L.group.id, groups)){
+				groups[groups.length] = L.group;			
 			}
-			if(!isInGroup(R.circle.group.id, groups)){
-				groups[groups.length] = R.circle.group;
+			if(!isInGroup(R.group.id, groups)){
+				groups[groups.length] = R.group;
 			}
 			return groups;
 		}
