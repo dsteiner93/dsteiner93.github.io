@@ -199,13 +199,7 @@
 				stage.update();
 			}
 			else  {
-				//This will need to be changed to either 50 or 100 depending on the rotations made
 				floor[xToArray(block.x)] -= 100;
-				/* SUPER IMPORTANT TODO:
-				 * Need to make sure each circle has the proper coordinates here. The values I'm assigning here aren't accurate if there's a rotation
-				 */
-				//Can't edit these without making them disappear. Need to figure out how to edit a block's
-				//child circles without making the block go invisible
 				var x = block.x;
 				var y = block.y;
 				var child1x = block.getChildAt(0).x + x;
@@ -251,11 +245,6 @@
 					block.getChildAt(1).specialY = yToArray(child2y);
 					block.getChildAt(1).specialX = xToArray(child2x);
 				}
-				
-				/*block.getChildAt(0).specialX = block.getChildAt(0).x + x;
-				block.getChildAt(0).specialY = block.getChildAt(0).y + y;
-				block.getChildAt(1).specialX = block.getChildAt(1).x + x;
-				block.getChildAt(1).specialY = block.getChildAt(1).y + y;*/
 				
 				updateGroups(block.getChildAt(0));
 				updateGroups(block.getChildAt(1));
@@ -315,6 +304,17 @@
 						var y = globalGroups[i].elements[j].specialY;
 						gameGrid[y][x] = new space();
 						globalGroups[i].elements[j].parent.removeChild(globalGroups[i].elements[j]);
+						
+						var q;
+						for(q = 0; q < y; q++){
+							if(gameGrid[q][x].occupied){
+								gameGrid[q][x].getCircle().specialY = gameGrid[q][x].getCircle().specialY + 1;
+								gameGrid[q][x].getCircle().parent.getChild(gameGrid[q][x].circle).y += 50;
+							}
+						}
+					
+				
+						
 						//stage.removeChild(globalGroups[i].elements[j].parent);
 					}
 					//Delete the item from the array of groups
