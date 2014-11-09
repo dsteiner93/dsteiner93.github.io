@@ -14,7 +14,7 @@
    height - radius, height - radius, height - radius); // an array that keeps track of the height of the blocks at each x-coord
   
    var pair = function (block)  { //this structure will keep track of the orientation for rotations
-		var thisPair = this;
+		thisPair = this;
 		thisPair.block = block;
 		thisPair.pivot = block.getChildAt(0);
 		thisPair.rotatable = block.getChildAt(1);
@@ -126,13 +126,13 @@
 				}
 			}
 			if (rotateBuffer == 0)  {
-				if (key.isPressed('x'))  {
+				if (key.isPressed('x') && !hitFloor(currentBlock))  {
 					currentPair.rotateCCW();
 					console.log('x pressed');
 					rotateBuffer++;
 					stage.update();
 				}
-				if (key.isPressed('z'))  {
+				if (key.isPressed('z') && !hitFloor(currentBlock))  {
 					currentPair.rotateCW();
 					console.log('z pressed');
 					rotateBuffer++;
@@ -144,7 +144,7 @@
 				if (keyBuffer == 6)  {
 					keyBuffer = 0;
 				}
-			}
+			}	
 			if (rotateBuffer != 0)  {
 				rotateBuffer++;
 				if (rotateBuffer == 8)  {
