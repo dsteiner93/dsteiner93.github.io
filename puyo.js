@@ -313,8 +313,7 @@
 			if(changed==1) condenseColumns(); //If a group was deleted, we'll need to update the board again
 		}
 		
-		function condenseColumns() { //
-			var q;
+		function condenseColumns() {
 			var x;
 			for(x = 0; x<=5; x++){ //for each column
 				condenseColumn(x);
@@ -331,10 +330,9 @@
 					}
 					if(z>0){
 						gameGrid[z][x].circle.specialY = q;
-						gameGrid[z][x].circle.y = arrayToY(q);
+						gameGrid[z][x].circle.y += 2*radius*(q-z);
 						gameGrid[q][x].setCircle(gameGrid[z][x].circle); //if you found one, swap it in
-						gameGrid[q][x].circle.group = null;
-						//gameGrid[z][x].circle.parent.removeChild(gameGrid[z][x]);
+						//gameGrid[q][x].circle.group = null;
 						gameGrid[z][x] = new space();
 					}
 				}
