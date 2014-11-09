@@ -330,7 +330,8 @@
 						z--;
 					}
 					if(z>0){
-						gameGrid[q][x].circle.color = gameGrid[z][x].circle.color; //if you found one, swap it in
+						gameGrid[z][x].circle.specialY = q;
+						gameGrid[q][x].setCircle(gameGrid[z][x].circle); //if you found one, swap it in
 						gameGrid[q][x].circle.group = null;
 						gameGrid[z][x] = new space();
 					}
