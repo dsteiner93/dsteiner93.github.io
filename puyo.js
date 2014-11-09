@@ -217,20 +217,27 @@
 		 *         B
 		 */
 			var groups = [];
-			var A = gameGrid[yToArray(circle.y+1)][xToArray(circle.x)].getCircle();
-			var B = gameGrid[yToArray(circle.y-1)][xToArray(circle.x)].getCircle();
-			var L = gameGrid[yToArray(circle.y)][xToArray(circle.x-1)].getCircle();
-			var R = gameGrid[yToArray(circle.y)][xToArray(circle.x+1)].getCircle();
-			
-			groups[groups.length] = A.group;
-			if(!isInGroup(B.group.id, groups)){
-				groups[groups.length] = B.group;
+			if(gameGrid[yToArray(circle.y+1)][xToArray(circle.x)].isOccupied()){
+				var A = gameGrid[yToArray(circle.y+1)][xToArray(circle.x)].getCircle();
+				groups[groups.length] = A.group;
 			}
-			if(!isInGroup(L.group.id, groups)){
-				groups[groups.length] = L.group;			
+			if(gameGrid[yToArray(circle.y-1)][xToArray(circle.x)].isOccupied()){
+				var B = gameGrid[yToArray(circle.y-1)][xToArray(circle.x)].getCircle();
+				if(!isInGroup(B.group.id, groups)){
+					groups[groups.length] = B.group;
+				}
 			}
-			if(!isInGroup(R.group.id, groups)){
-				groups[groups.length] = R.group;
+			if(gameGrid[yToArray(circle.y)][xToArray(circle.x-1)].isOccupied()){
+				var L = gameGrid[yToArray(circle.y)][xToArray(circle.x-1)].getCircle();
+				if(!isInGroup(L.group.id, groups)){
+					groups[groups.length] = L.group;			
+				}
+			}
+			if(gameGrid[yToArray(circle.y)][xToArray(circle.x+1)].isOccupied()){
+				var R = gameGrid[yToArray(circle.y)][xToArray(circle.x+1)].getCircle();
+				if(!isInGroup(R.group.id, groups)){
+					groups[groups.length] = R.group;
+				}
 			}
 			return groups;
 		}
