@@ -20,7 +20,7 @@
 		thisPair.rotatable = block.getChildAt(1);
 		thisPair.orientation = 12; //orientation based on clock face, starts at 12 O'clock
 		thisPair.rotateCW = function rotateCW()  {
-			if (thisPair.orientation == 12 && thisPair.block.x + thisPair.rotatble.x + 50 <= width - radius)  {
+			if (thisPair.orientation == 12 && thisPair.block.x + thisPair.rotatable.x + 50 <= width - radius)  {
 				thisPair.rotatable.x += 50;
 				thisPair.rotatable.y += 50;
 				thisPair.orientation = 3;
