@@ -3,12 +3,14 @@
 
 <head>
     <title>Puyo Pop - COMP 426</title>
-    <link rel="stylesheet" 
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
     <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript" src="main.js"></script>
+    <script src="http://code.createjs.com/easeljs-0.7.0.min.js"></script>
+    <script src="puyo.js"></script>
+    <script src="https://rawgithub.com/madrobby/keymaster/master/keymaster.js"></script>
 </head>
 
 <body>
@@ -22,60 +24,18 @@
             <p class='name'>Adam Wang</p>
             <p class='name'>Volodymyr Siedlecki</p>
         </div>
-        <button class="btn" id="start" onclick="showRules()">PLAY</button>
+        <button class="btn" id="start" onclick="showGame()">PLAY</button>
         <div id="gameArea">
-                <div id="text">
-                    <!-- description of game -->
-                    <h3 class="details" id='desc'>Description</h3>
-                    <p class="details"> It's like tetris, but better.
-                        <br> <br>
-			Our team's project is going to be to implement the Japenese video game Puyo Pop. 
-			<br> <br>
-			Puyo Pop (also known as Puyo Puyo, Dr. Robotnik's Mean Bean Machine, or Kirby's Avalanche) 
-			is a tile-matching puzzle game (like Tetris). 
-			<br> <br>
-			The game takes place in a 12x6 grid. Blocks consisting of two colored blobs fall from the top 
-			of the screen. The pace at which these blobs fall increases as the game progresses. (Like the 
-			tertonimos in Tetris.) The blobs fall directly downward if not moved, but the player can also 
-			move the blobs horizontally and rotate them as they fall. Blobs can take the following colors: 
-			Green, Pink, Blue, Purple, and Orange. 
-			<br> <br>
-			The goal of the game is to last as long as possible without your screen filling up with blobs. 
-			The key rule of the game is that if any four blobs of the same color form a tetronimo upon 
-			landing, they disappear. (In Tetris a row disappears if you have filled every space in the row. 
-			In this game the four or more connected blobs of the same colour alone disappear.) When these 
-			blobs disappear every blob that was on top of them in the column falls down. 
-			<br> <br>
-			Through making the blobs disappear, you can form combos. So if you match four blobs, they 
-			disappear, and then the blobs above them fall down to form another set of four or more connected 
-			blobs, they will also disappear.  
-			<br> <br>
-			In two player mode, if you form one of these combos, garbage blobs will be dropped onto your 
-			opponents grid. These garbage pieces can only be removed if they are next to a set of blobs when 
-			they disappear. Garbage blobs are indicated by their grey or black color. 
-			<br> <br>
-			Our proposed project is to implement this game. This will first be done by implementing the one 
-			player mode, where one player plays by themself as long as possible. Like Tetris, the difficulty
-			would increase over time thanks to the increasing speed at which blobs fall. 
-			<br> <br>
-			A more abitious project is to implement the two player mode. On the client side this will require
-			creating all the graphics for the game and implementing the physics of the falling blobs. On the 
-			server side we will need to be able to match two users for them to play each other, as well as 
-			make sure that what appears in each of the users' browsers is in sync. </p>
-                    <button class="btn" id="mock-up" onclick="showGame()"> View Mock-Up </button>
-                    <iframe class="details" width="420" height="315" src="http://www.youtube.com/embed/rowyS0wfuUc" frameborder="0"></iframe </div>
-                 </div>
-                <div id="board">
-                    <!--                    the look of the game should be placed here.         -->
-                    	<div id="menu">
-				<button class="menuItem">One Player</button>
-				<button class="menuItem">Two Player</button>
-				<button class="menuItem">Settings</button>
-				</div>
-				<div id="intro">
-					<img src="https://cloud.githubusercontent.com/assets/7975667/4692605/b4ecc1f0-576e-11e4-92b6-527753741de4.gif" alt="Puyo Puyo" style="width:550px;height:500px">
-				</div>
-                </div>
+            <div id='players'>
+                <button id="onePlayer" onclick="showCanvas();init();"> One Player</button>
+                <span> or...</span>
+                <button id="twoPlayer" onclick="warning()"> Two Player</button>
+            </div>
+            <div id="center">
+                <canvas id="demoCanvas" width="300" height="600" style="background-color: #00FFFF;">
+                    alternate content
+                </canvas>
+            </div>
         </div>
 </body>
 
