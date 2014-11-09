@@ -14,10 +14,11 @@
    height - radius, height - radius, height - radius); // an array that keeps track of the height of the blocks at each x-coord
   
    var pair = function (block)  { //this structure will keep track of the orientation for rotations
-		this.block = block;
-		this.pivot = block.getChildAt(0);
-		this.rotatable = block.getChildAt(1);
-		this.orientation = 12; //orientation based on clock face, starts at 12 O'clock
+		var thisPair = this;
+		thisPair.block = block;
+		thisPair.pivot = block.getChildAt(0);
+		thisPair.rotatable = block.getChildAt(1);
+		thisPair.orientation = 12; //orientation based on clock face, starts at 12 O'clock
 		thisPair.rotateCW = function rotateCW()  {
 			if (thisPair.orientation == 12)  {
 				thisPair.rotatable.x += 50;
