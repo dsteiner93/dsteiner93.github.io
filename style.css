@@ -3,9 +3,9 @@
     src: url(media/JandaManateeBubble.ttf);
 }
 
-#start{
-     border: solid #CC0000 1px;
-     margin-top: 20px;
+#start {
+    border: solid #CC0000 1px;
+    margin-top: 20px;
 }
 
 #title {
@@ -111,20 +111,27 @@ body {
     padding-top: 40px;
 }
 
-#p1{
-     border: solid #CC0000 1px;
+#p1 {
+    border: solid #CC0000 1px;
 }
 
-#p2{
-     border: solid #CC0000 1px;
+#p2 {
+    border: solid #CC0000 1px;
 }
 
-
-
-#players{
+#players {
     margin-top: 50px;
 }
 
-#space{
+#space {
     height: 30px;
+}
+
+#reset {
+    background: none;
+    border: none;
+}
+
+#reset:hover {
+    color: black;
 }

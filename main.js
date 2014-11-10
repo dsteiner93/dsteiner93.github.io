@@ -29,24 +29,16 @@ function showCanvas() {
 
     setTimeout(function() {
         $("#bubbleSmall").fadeIn(200);
-        $("#center").fadeIn('slow');
+        $("#center").fadeIn(300);
         $("#menubox").fadeIn(300);
         $("#menubox").fadeIn(300);
         $("#nav2").fadeIn(300);
-        startTimer();
     }, 400);
 
     setTimeout(function() {
-        $("#demoCanvas").fadeIn('slow');
+        $("#demoCanvas").fadeIn(500);
     }, 600);
 };
-
-function startTimer() {
-    timer = setInterval(function() {
-        document.getElementById("time").innerHTML = currentTime;
-        currentTime++;
-    }, 1000);
-}
 
 function changeTitleColor() {
     var red = Math.floor(Math.random() * 100) + 120;
