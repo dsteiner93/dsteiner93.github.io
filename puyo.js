@@ -318,7 +318,7 @@
 			for(x = 0; x<=5; x++){ //for each column
 				condenseColumn(x);
 			}
-			setTimeout(updateBoard(0), 1000);
+			setTimeout(updateBoard(0), 10000);
 		}
 		
 		function condenseColumn(x) {
