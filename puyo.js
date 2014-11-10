@@ -191,11 +191,17 @@
 
        function generateColor() {
            var x = Math.random();
-           if (x < .20) return "#F59D92"; //red
+		   //I'm only changing so I can debug easier (easier for me to read "blue" than "#00B2EE" in debugger
+           /*if (x < .20) return "#F59D92"; //red
            else if (x < .40) return "#BF5FFF"; // purple
            else if (x < .60) return "#00B2EE"; // blue
            else if (x < .80) return "#6CFFD9"; // greenish
-           else return "#DAF5A5"; //yellow
+           else return "#DAF5A5"; //yellow*/
+		   if (x < .20) return "blue"; //red
+           else if (x < .40) return "green"; // purple
+           else if (x < .60) return "purple"; // blue
+           else if (x < .80) return "orange"; // greenish
+           else return "pink";
        }
 
        function fallingBlock(block) {
