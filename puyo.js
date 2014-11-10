@@ -527,7 +527,7 @@
        if (sizeOfBlock == 4) {
            currentScore = currentScore + 7;
        } else {
-           currentScore = (sizeOfBlock * sizeOfBlock) - (16);
+           currentScore = currentScore + (sizeOfBlock * sizeOfBlock) - (16);
        }
        document.getElementById("currentScore").innerHTML = currentScore;
        if (currentScore > highScore) {
