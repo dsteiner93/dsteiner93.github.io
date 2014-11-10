@@ -316,23 +316,25 @@
            var i;
            var j;
            for (i = 0; i < globalGroups.length; i++) { //for each group, check if >=4
-               if (globalGroups[i].size >= 4) {
-                   changed = 1;
-                   updateScore(globalGroups[i].size);
-                   for (j = 0; j < globalGroups[i].elements.length; j++) { //delete every element in the group
-                       var x = globalGroups[i].elements[j].specialX;
-                       var y = globalGroups[i].elements[j].specialY;
-                       gameGrid[y][x] = new space();
-                       globalGroups[i].elements[j].parent.removeChild(globalGroups[i].elements[j]);
-                   }
-                   //Delete the item from the array of groups
-                   globalGroups.splice(i, 1);
-               }
-			   if(globalGroups[i].size <= 0){
-				//Delete from the array of groups
-                   globalGroups.splice(i, 1);
+			   if(globalGroups[i] != null){
+				   if (globalGroups[i].size >= 4) {
+					   changed = 1;
+					   updateScore(globalGroups[i].size);
+					   for (j = 0; j < globalGroups[i].elements.length; j++) { //delete every element in the group
+						   var x = globalGroups[i].elements[j].specialX;
+						   var y = globalGroups[i].elements[j].specialY;
+						   gameGrid[y][x] = new space();
+						   globalGroups[i].elements[j].parent.removeChild(globalGroups[i].elements[j]);
+					   }
+					   //Delete the item from the array of groups
+					   globalGroups.splice(i, 1);
+				   }
+				   if(globalGroups[i].size <= 0){
+					//Delete from the array of groups
+					   globalGroups.splice(i, 1);
+				   }
 			   }
-           }
+		   }
            if (changed == 1) condenseColumns(); //If a group was deleted, we'll need to update the board again
        }
 
