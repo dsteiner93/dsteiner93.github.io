@@ -66,6 +66,8 @@ nav {
     height: 600px;
     margin: 0;
     padding: 0;
+    border: 2px solid;
+    border-radius: 25px;
 }
 
 body {
