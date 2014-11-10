@@ -329,7 +329,7 @@
 					   //Delete the item from the array of groups
 					   globalGroups.splice(i, 1);
 				   }
-				   if(globalGroups[i].size <= 0){
+				   else if(globalGroups[i].size <= 0){
 					//Delete from the array of groups
 					   globalGroups.splice(i, 1);
 				   }
