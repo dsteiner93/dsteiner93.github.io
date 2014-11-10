@@ -509,11 +509,11 @@ function speedUp(){
 }	
 
 function updateScore(sizeOfBlock){
-             //blocks of 4 earn 5 points.
+             //blocks of 4 earn 7 points.
              // if the block is more than 4 then it's the difference between squares.
              // since the bigger the block size is, the more points you earn.
              if (sizeOfBlock == 4) {
-                    currentScore = currentScore + 5;
+                    currentScore = currentScore + 7;
              } else{
                     currentScore =  (sizeOfBlock * sizeOfBlock) - (16);
              }
