@@ -134,4 +134,5 @@ body {
 
 #reset:hover {
     color: black;
+    cursor: pointer;
 }
