@@ -9,6 +9,8 @@
    var gameGrid; //accessed with [ycoord][xcoord]
    var globalGroups = [];
    var globalCounter = 0;
+   var currentScore = 0;
+   var highScore = 0;
    var spaceId = 0; //to id each space
    var floor = new Array(height - radius, height - radius, height - radius, 
    height - radius, height - radius, height - radius); // an array that keeps track of the height of the blocks at each x-coord
@@ -300,6 +302,7 @@
 			for(i = 0; i < globalGroups.length; i++){ //for each group, check if >=4
 				if(globalGroups[i].size >= 4){
 					changed=1;
+                                        updateScore(globalGroups[i].size);
 					for(j = 0; j < globalGroups[i].elements.length; j++){ //delete every element in the group
 						var x = globalGroups[i].elements[j].specialX;
 						var y = globalGroups[i].elements[j].specialY;
@@ -504,3 +507,20 @@ function speedUp(){
              console.log(fallInterval);
              
 }	
+
+function updateScore(sizeOfBlock){
+             //blocks of 4 earn 5 points.
+             // if the block is more than 4 then it's the different between squares.
+             // since the bigger the block size is, the more points you earn.
+             if (sizeOfBlock == 4) {
+                    currentScore = currentScore + 5;
+             } else{
+                    currentScore =  (sizeOfBlock+1 * sizeOfBlock+1) - (16);
+             }
+              document.getElementById("currentScore").innerHTML = currentScore;
+              if (currentScore > highScore) {
+                          highScore = currentScore;
+                          document.getElementById("highScore").innerHTML = highScore;
+              }
+             
+}
