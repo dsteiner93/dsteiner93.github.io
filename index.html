@@ -12,51 +12,42 @@
         <script src="https://rawgithub.com/madrobby/keymaster/master/keymaster.js"></script>
     </head>
     <body>
-	
         <nav>
             <div id='menubox'>
                 <div class="menu">
-                       <p> Current Score </p>               
+                    <p> Current Score </p>
                     <p class='info'> 0 </p>
                 </div>
                 <div class="menu">
-		      <p> High Score </p>
+                    <p> High Score </p>
                     <p class='info'> 0 </p>
                 </div>
-<!--                <div class="menu">
-                    <p> Timer </p>
-                    <p class='info' id ='time'> 0 </p>
-                    </span>
-                </div>
-                <div class="menu"> Restart </div>-->
             </div>
         </nav>
-	
         <div id="container">
-	    <div id='title'>
-		<h1 id='bubble'>Puyo Pop</h1>
-	    </div>
-	    <div id="members">
-		<h2>Group Members:</h2>
-		<p class='name'>David Steiner</p>
-		<p class='name'>Adam Wang</p>
-		<p class='name'>Volodymyr Siedlecki</p>
-	    </div>
-		<button class="btn" id="start" onclick="showGame()">PLAY</button>
-	    <div id="gameArea">
-		<div id='players'>
-		    <button id="onePlayer" onclick="showCanvas();init();"> One Player</button>
-		    <span> or...</span>
-		    <button id="twoPlayer" onclick="warning()"> Two Player</button>
-		</div>
-		<div id="center">
-		    <canvas id="demoCanvas" width="300" height="600" style="background-color: #00FFFF;">
-			alternate content
-		    </canvas>
-		</div>
+            <div id='title'>
+                <h1 id='bubbleBig'>Puyo Pop</h1>
+                <h1 id='bubbleSmall'>Puyo Pop</h1>
+            </div>
+            <div id="members">
+                <h2>Group Members:</h2>
+                <p class='name'>David Steiner</p>
+                <p class='name'>Adam Wang</p>
+                <p class='name'>Volodymyr Siedlecki</p>
+            </div>
+            <button class="btn" id="start" onclick="showGame()">PLAY</button>
+            <div id="gameArea">
+                <div id='players'>
+                    <button id="onePlayer" onclick="showCanvas();init();"> One Player</button>
+                    <button id="twoPlayer" onclick="warning()"> Two Player</button>
+                </div>
+                <div id="center">
+                    <canvas id="demoCanvas" width="300" height="600" style="background-color: #A4F6FF;">
+                        alternate content
+                    </canvas>
+                </div>
+            </div>
         </div>
-	</div>
-	
         <nav id='nav2'>
             <div id='menubox2'>
                 <div class="menu">
@@ -64,9 +55,10 @@
                     <p class='info' id ='time'> 0 </p>
                     </span>
                 </div>
-                <div class="menu" id='reset'> <p> Restart </p> </div>
+                <div class="menu" id='reset'>
+                    <p> Restart </p>
+                </div>
             </div>
         </nav>
-	
     </body>
 </html>
