@@ -180,11 +180,11 @@
 		}
 		function generateColor() {
 			var x = Math.random();
-			if(x<.20) return "green";
-			else if(x<.40) return "pink";
-			else if(x<.60) return "blue";
-			else if(x<.80) return "purple";
-			else return "orange";
+			if(x<.20) return "#F59D92"; //red
+			else if(x<.40) return "#C88DE4"; // purple
+			else if(x<.60) return "#96C0FF"; // blue
+			else if(x<.80) return "#6CFFD9"; // greenish
+			else return "#DAF5A5"; //yellow
 		}
 		function fallingBlock(block)  {
 			if (counter == fallInterval)  {
