@@ -1,6 +1,12 @@
 TODO
 ====================
--Bug fix everything (Game not letting you rotate out of bounds, blocks disappearing properly, blocks falling after blocks beneath them disappear.)
+General improvements I (David) think could be made {
+-Animation for blocks disappearing
+-I know I was the one who suggested the name "Puyo Pop," but we could probably think of something better
+-Perfect the color scheme/UI
+}
+
+-Bug fix everything (Game should never crash.)
 
 -Need to not just remove the 4+ contiguous blocks, but remake the groups every time blocks disappear so the combo system can be implemented
 
@@ -17,7 +23,7 @@ TODO
 ====================
 CURRENT STATUSES
 
-David: Four+ blocks now disappear, but I need to make it so that when the blocks fall after the blocks beneath them disappear it will re-update the size of all the groups and delete if there's another match
+David: I added a delay to combos so it feels more like the actual game. (Previously if you did a combo every block affected would disappear at once, now the blocks fall so it is more obvious what is happening, like in the actual game.) Still, there are some pesky, lingering bugs.
 
 Adam: The blocks will now visibily rotate. I need to update basically every other method to account for proper collision detection. 
 
