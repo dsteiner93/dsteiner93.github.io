@@ -182,7 +182,7 @@
 			var x = Math.random();
 			if(x<.20) return "#F59D92"; //red
 			else if(x<.40) return "#BF5FFF"; // purple
-			else if(x<.60) return "#62B1F6"; // blue
+			else if(x<.60) return "#00B2EE"; // blue
 			else if(x<.80) return "#6CFFD9"; // greenish
 			else return "#DAF5A5"; //yellow
 		}
