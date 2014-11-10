@@ -328,6 +328,10 @@
                    //Delete the item from the array of groups
                    globalGroups.splice(i, 1);
                }
+			   if(globalGroups[i].size <= 0){
+				//Delete from the array of groups
+                   globalGroups.splice(i, 1);
+			   }
            }
            if (changed == 1) condenseColumns(); //If a group was deleted, we'll need to update the board again
        }
@@ -354,7 +358,14 @@
                        gameGrid[z][x].circle.specialY = q;
                        gameGrid[z][x].circle.y += 2 * radius * (q - z);
                        gameGrid[q][x].setCircle(gameGrid[z][x].circle); //if you found one, swap it in
-                       gameGrid[q][x].circle.group = null;
+                       
+					   //When a circle is moved, it might not be in its previous group anymore, so remove it
+					   gameGrid[q][x].circle.group.size = gameGrid[q][x].circle.group.size - 1;
+					   var index = gameGrid[q][x].circle.group.elements.indexOf(gameGrid[q][x].circle);
+					   if (index > -1) {
+							gameGrid[q][x].circle.group.elements.splice(index, 1);
+					   }
+					   gameGrid[q][x].circle.group = null;
                        updateGroups(gameGrid[q][x].circle);
                        gameGrid[z][x] = new space();
                    }
