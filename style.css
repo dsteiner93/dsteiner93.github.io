@@ -1,110 +1,124 @@
 @font-face {
-font-family:Bubble;
-src:url(media/JandaManateeBubble.ttf);
+    font-family: Bubble;
+    src: url(media/JandaManateeBubble.ttf);
 }
 
 #title {
-padding-top:0;
-padding-bottom:15px;
-margin:5px 0;
+    padding-top: 0;
+    padding-bottom: 5px;
 }
 
-#bubble {
-font-family:Bubble, sans-serif;
-font-size:80px;
-padding-top:0;
-margin:5px 0;
+#bubbleBig {
+    font-family: Bubble, sans-serif;
+    font-size: 80px;
+    padding-top: 0;
+    margin: 5px 0;
+}
+
+#bubbleSmall {
+    font-family: Bubble, sans-serif;
+    font-size: 30px;
+    padding-top: 0;
+    margin: 5px 0;
+    position: relative;
+    top: -10px;
 }
 
 nav {
-width:35%;
-float:left;
-padding:10px;
+    width: 35%;
+    float: left;
+    padding: 10px;
+    color: #4470FF;
 }
 
 #nav2 {
-float: left;
-width: 35%;
-padding:10px;
+    float: left;
+    width: 35%;
+    padding: 10px;
+    color; #4470FF;
 }
 
 #container {
-float:left;
-padding-top:10px;
-margin-left:auto;
-margin-right:auto;
-text-align:center;
-color:blue;
-width:30%;
-}
-
-#start:hover,#mock-up:hover {
-color:orange;
+    float: left;
+    padding-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: #4470FF;
+    width: 30%;
 }
 
 .menuItem {
-color:#FFF;
-font-size:24px;
-background-color:#000;
-height:75px;
-width:150px;
-margin-top:50px;
-}
-
-h3 {
-color:#FFF;
-padding-top:0;
-margin-top:0;
+    font-size: 24px;
+    height: 75px;
+    width: 150px;
+    margin-top: 50px;
 }
 
 #gameArea {
-margin-left:auto;
-margin-right:auto;
-background:rgba(255,255,255,0.05);
-width:300px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
 }
 
 #demoCanvas {
-background-color:red;
-width:300px;
-height:600px;
-margin:0;
-padding:0;
+    width: 300px;
+    height: 600px;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-background:#FFE1FF;
+/*background:#FFE1FF;*/
+    background-image: url('media/large.jpg');
 }
 
 #center {
-width:300px;
-margin:0;
-padding:0;
+    width: 300px;
+    margin: 0;
+    padding: 0;
 }
 
 * {
-margin:0;
-padding:0;
+    margin: 0;
+    padding: 0;
 }
 
 .menu {
-margin-top:50px;
-text-align:center;
-width:150px;
-font-family:Bubble, sans-serif;
-font-size:20px;
-color:blue;
-padding:10px;
+    margin-top: 50px;
+    text-align: center;
+    width: 150px;
+    font-family: Bubble, sans-serif;
+    font-size: 20px;
+    padding: 10px;
 }
 
 #menubox {
-float:right;
+    float: right;
 }
 
 #menubox2 {
-width:150px;
+    width: 150px;
 }
 
-#reset{
-padding-top: 50px;
+#reset {
+    padding-top: 50px;
+}
+
+#onePlayer {
+    margin-top: 50px;
+    text-align: center;
+    width: 120px;
+    font-family: Bubble, sans-serif;
+    font-size: 20px;
+    padding: 10px;
+}
+
+#twoPlayer {
+    margin-top: 50px;
+    text-align: center;
+    width: 120px;
+    font-family: Bubble, sans-serif;
+    font-size: 20px; 
+    padding: 10px;
 }
