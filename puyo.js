@@ -490,7 +490,13 @@
            }
            group1.size = size;
            group1.elements = mergedEls;
-           group2 = null;
+		   var j;
+		   //delete group2 from globalGroups
+		   for(j = 0; j<globalGroups.length; j++){
+				if(group2.id == globalGroups[j].id){
+					globalGroups.splice(j, 1);
+				}
+		   }
        }
 
        function group(id, color, size, elements) {
