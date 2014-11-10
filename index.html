@@ -35,11 +35,12 @@
                 <p class='name'>Adam Wang</p>
                 <p class='name'>Volodymyr Siedlecki</p>
             </div>
-            <button class="btn" id="start" onclick="showGame()">PLAY</button>
+            <button class="btn" id='start' onclick="showGame()">PLAY</button>
             <div id="gameArea">
                 <div id='players'>
-                    <button id="onePlayer" onclick="showCanvas();init();"> One Player</button>
-                    <button id="twoPlayer" onclick="warning()"> Two Player</button>
+                    <button class="btn" id='p1' onclick="showCanvas();init();"> One Player</button>
+                    <div id='space'></div>
+                    <button class="btn" id='p2' onclick="warning()"> Two Player</button>
                 </div>
                 <div id="center">
                     <canvas id="demoCanvas" width="300" height="600" style="background-color: #CC0000;">

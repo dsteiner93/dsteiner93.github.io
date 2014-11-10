@@ -3,6 +3,11 @@
     src: url(media/JandaManateeBubble.ttf);
 }
 
+#start{
+     border: solid #CC0000 1px;
+     margin-top: 20px;
+}
+
 #title {
     padding-top: 0;
     padding-bottom: 5px;
@@ -71,7 +76,6 @@ nav {
 }
 
 body {
-/*background:#FFE1FF;*/
     background-image: url('media/large.jpg');
 }
 
@@ -107,20 +111,20 @@ body {
     padding-top: 40px;
 }
 
-#onePlayer {
-    margin-top: 50px;
-    text-align: center;
-    width: 120px;
-    font-family: Bubble, sans-serif;
-    font-size: 20px;
-    padding: 10px;
+#p1{
+     border: solid #CC0000 1px;
 }
 
-#twoPlayer {
+#p2{
+     border: solid #CC0000 1px;
+}
+
+
+
+#players{
     margin-top: 50px;
-    text-align: center;
-    width: 120px;
-    font-family: Bubble, sans-serif;
-    font-size: 20px; 
-    padding: 10px;
+}
+
+#space{
+    height: 30px;
 }
