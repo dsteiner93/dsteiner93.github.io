@@ -594,5 +594,6 @@ window.addEventListener("keydown", function(e){
     if(e.keyCode == 80) {
         e.preventDefault();
    	createjs.Ticker.setPaused(true);
+   	alert(createjs.Ticker.getPaused());
     }
 });
