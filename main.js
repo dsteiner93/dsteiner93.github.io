@@ -8,6 +8,7 @@ $(document).ready(function() {
     $("#menubox").hide();
     $('#nav2').hide();
     $('#bubbleSmall').hide();
+    $("#pause").hide();
     //setInterval(function(){changeTitleColor()}, 1000)
 });
 
@@ -22,15 +23,17 @@ function showGame() {
 
 
 function showCanvas() {
-    $("#players").fadeToggle(300);
-   
-    setTimeout(function() {
-        $("#instructions").hide();
-        $("#bubbleBig").fadeOut(300);
-    }, 400);
+
+    $("#instructions").fadeOut(200);
+    $("#players").fadeToggle(200);
+
 
     setTimeout(function() {
-        $("#bubbleSmall").fadeIn(200);
+        $("#bubbleBig").fadeOut(100);
+    }, 200);
+
+    setTimeout(function() {
+        $("#bubbleSmall").fadeIn(400);
         $("#center").fadeIn(300);
         $("#menubox").fadeIn(300);
         $("#menubox").fadeIn(300);
@@ -40,6 +43,10 @@ function showCanvas() {
     setTimeout(function() {
         $("#demoCanvas").fadeIn(500);
     }, 600);
+
+    setTimeout(function() {
+        $("#pause").fadeIn(100);
+    }, 1000);
 };
 
 function changeTitleColor() {
