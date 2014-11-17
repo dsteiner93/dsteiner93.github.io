@@ -607,7 +607,7 @@ window.addEventListener("keydown", function(e){
     	alert('Instuctions');
     	if(!createjs.Ticker.getPaused()){
     	createjs.Ticker.setPaused(true);
-    	$('#instructions').show();
+    	$('#instructions').css('visibility: visible');
     	} else{
     	 createjs.Ticker.setPaused(false);
     	 $('#instructions').hide(300);
