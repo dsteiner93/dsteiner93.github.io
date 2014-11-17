@@ -137,7 +137,7 @@ body {
     cursor: pointer;
 }
 
-#insuctions{
+#instructions{
     z-index: 2;
  position:absolute;
     left:0;
