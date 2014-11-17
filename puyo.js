@@ -607,12 +607,12 @@ window.addEventListener("keydown", function(e){
     
     	if(!createjs.Ticker.getPaused()){
     	createjs.Ticker.setPaused(true);
-    	$('#instructions').css('background-color: white');
-    	$('#instructions').show(300);
+    //	$('#instructions').css('background-color: white');
+    	$('#instructions').fadeIn(300);
     	} else{
     	 createjs.Ticker.setPaused(false);
-    	 $('#instructions').hide(300);
-    	 $('#instructions').css('background-color: none');
+    	 $('#instructions').fadeOut(300);
+    	 //$('#instructions').css('background-color: none');
     	}
     	
     }
