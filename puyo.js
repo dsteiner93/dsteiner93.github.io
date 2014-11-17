@@ -595,6 +595,7 @@ window.addEventListener("keydown", function(e){
     if(e.keyCode == 80) {
     	alert('Pause');
     	createjs.Ticker.removeEventListener('tick', stage);
+    	createjs.Ticker.removeEventListener("tick", tick);
     }
     if(e.keyCode == 73){
     	alert('Instuctions');
