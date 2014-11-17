@@ -591,6 +591,7 @@
    }
    
    $(document).keypress(function(e) {
+   	alert(e.keyCode);
    	if(e.keyCode == 80 ){
 alert( "Handler for .keypress() called." );
 }
