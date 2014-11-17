@@ -605,6 +605,14 @@ window.addEventListener("keydown", function(e){
     }
     if(e.keyCode == 73){
     	alert('Instuctions');
+    	if(!createjs.Ticker.getPaused()){
+    	createjs.Ticker.setPaused(true);
+    	$('#insuctions').fadeIn(300);
+    	} else{
+    	 createjs.Ticker.setPaused(false);
+    	 $('#insuctions').hide(300);
+    	}
+    	
     }
     e.preventDefault();
 });
