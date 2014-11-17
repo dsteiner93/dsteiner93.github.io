@@ -25,9 +25,9 @@ function showCanvas() {
     $("#players").fadeToggle(300);
    
     setTimeout(function() {
-        $("#instructions").fadeToggle();
+        $("#instructions").hide();
         $("#bubbleBig").fadeOut(300);
-    }, 200);
+    }, 400);
 
     setTimeout(function() {
         $("#bubbleSmall").fadeIn(200);
