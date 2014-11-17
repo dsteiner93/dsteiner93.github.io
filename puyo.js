@@ -585,3 +585,7 @@
        currentTime = 0;
        init();
    }
+   
+   function warning(){
+   	alert('Two Player is still under development. Please Use One Player.')
+   }
