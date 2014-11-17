@@ -591,9 +591,11 @@
    }
    
 window.addEventListener("keydown", function(e){
+    e.preventDefault();
     if(e.keyCode == 80) {
-    	alert('hello');
-        e.preventDefault();
-stage.removeEventListener('tick');
+    	alert('Pause');
+    }
+    if(e.keyCode == 73){
+    	alert('Instuctions');
     }
 });
