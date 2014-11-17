@@ -604,13 +604,15 @@ window.addEventListener("keydown", function(e){
     
     }
     if(e.keyCode == 73){
-    	alert('Instuctions');
+    
     	if(!createjs.Ticker.getPaused()){
     	createjs.Ticker.setPaused(true);
-    	$('#instructions').css('visibility: visible');
+    	$('#instructions').css('background-color: white');
+    	$('#instructions').show(300);
     	} else{
     	 createjs.Ticker.setPaused(false);
     	 $('#instructions').hide(300);
+    	 $('#instructions').css('background-color: none');
     	}
     	
     }
