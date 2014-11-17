@@ -590,9 +590,16 @@
    	alert('Two Player is still under development. Please Use One Player.')
    }
    
-   $(document).keypress(function(e) {
-   	alert(e.keyCode);
-   	if(e.keyCode == 80 ){
-alert( "Handler for .keypress() called." );
-}
+window.addEventListener("keydown", function(e){
+/*
+keyCode: 8
+keyIdentifier: "U+0008"
+
+*/
+
+alert(e.keyCode);
+    if(e.keyCode === 80) {
+        e.preventDefault();
+        alert('Prevent page from going back');
+    }
 });
