@@ -591,11 +591,12 @@
    }
    
 window.addEventListener("keydown", function(e){
-    e.preventDefault();
+    
     if(e.keyCode == 80) {
     	alert('Pause');
     }
     if(e.keyCode == 73){
     	alert('Instuctions');
     }
+    e.preventDefault();
 });
