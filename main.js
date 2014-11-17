@@ -46,7 +46,7 @@ function showCanvas() {
 
     setTimeout(function() {
         $("#pause").fadeIn(100);
-    }, 1000);
+    }, 1500);
 };
 
 function changeTitleColor() {
