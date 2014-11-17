@@ -23,6 +23,7 @@ function showGame() {
 
 function showCanvas() {
     $("#players").fadeToggle(300);
+    $("#instructions").fadeToggle(300);
     setTimeout(function() {
         $("#bubbleBig").fadeOut(100);
     }, 200);
