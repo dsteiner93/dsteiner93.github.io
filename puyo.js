@@ -589,3 +589,9 @@
    function warning(){
    	alert('Two Player is still under development. Please Use One Player.')
    }
+   
+   $(document).keypress(function(e) {
+   	if(e.keyCode == '80'){
+alert( "Handler for .keypress() called." );
+}
+});
