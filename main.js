@@ -45,8 +45,8 @@ function showCanvas() {
     }, 600);
 
     setTimeout(function() {
-       // $("#pause").fadeIn(100);
-    }, 1500);
+        $("#pause").fadeIn(100);
+    }, 1000);
 };
 
 function changeTitleColor() {
