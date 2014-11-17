@@ -600,6 +600,7 @@ window.addEventListener("keydown", function(e){
     	createjs.Ticker.setPaused(true);
     	} else{
     	 createjs.Ticker.setPaused(false);
+    	 $('#instructions').fadeOut(300);
     	}
     
     }
