@@ -598,9 +598,11 @@ window.addEventListener("keydown", function(e){
     
     	if(!createjs.Ticker.getPaused()){
     	createjs.Ticker.setPaused(true);
+    	clearTimeout(timer);
     	} else{
     	 createjs.Ticker.setPaused(false);
     	 $('#instructions').fadeOut(300);
+    	 startTimer();
     	}
     
     }
@@ -610,9 +612,11 @@ window.addEventListener("keydown", function(e){
     	createjs.Ticker.setPaused(true);
     //	$('#instructions').css('background-color: white');
     	$('#instructions').fadeIn(300);
+    	clearTimeout(timer);
     	} else{
     	 createjs.Ticker.setPaused(false);
     	 $('#instructions').fadeOut(300);
+    	 startTimer();
     	 //$('#instructions').css('background-color: none');
     	}
     	
