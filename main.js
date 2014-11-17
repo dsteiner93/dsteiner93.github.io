@@ -45,7 +45,7 @@ function showCanvas() {
     }, 600);
 
     setTimeout(function() {
-       // $("#pause").fadeIn(100);
+        $("#pause").fadeIn(100);
     }, 1000);
 };
 
