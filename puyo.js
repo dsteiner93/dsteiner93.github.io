@@ -115,6 +115,7 @@
        createjs.Ticker.addEventListener("tick", stage);
 
        function tick(event) {
+       	if(!createjs.Ticker.getPaused()){
            fallingBlock(currentBlock);
            if (keyBuffer == 0) {
                if (key.isPressed('left') && !hitFloor(currentBlock)) {
@@ -160,6 +161,7 @@
                    rotateBuffer = 0;
                }
            }
+       	}
        }
 
        function generateBlock() { //creates a new block of two icon
@@ -594,9 +596,7 @@ window.addEventListener("keydown", function(e){
     
     if(e.keyCode == 80) {
     	alert('Pause');
-    	createjs.Ticker.removeEventListener('tick', stage);
-    	createjs.Ticker.removeEventListener("tick", tick);
-    	createjs.Ticker.off;
+    	createjs.Ticker.setPaused(true);
     }
     if(e.keyCode == 73){
     	alert('Instuctions');
