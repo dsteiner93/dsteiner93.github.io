@@ -598,7 +598,7 @@ keyIdentifier: "U+0008"
 */
 
 alert(e.keyCode);
-    if(e.keyCode === 80) {
+    if(e.keyCode == 80) {
         e.preventDefault();
         alert('Prevent page from going back');
     }
