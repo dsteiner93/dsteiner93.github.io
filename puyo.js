@@ -607,10 +607,10 @@ window.addEventListener("keydown", function(e){
     	alert('Instuctions');
     	if(!createjs.Ticker.getPaused()){
     	createjs.Ticker.setPaused(true);
-    	$('#insuctions').show();
+    	$('#instructions').show();
     	} else{
     	 createjs.Ticker.setPaused(false);
-    	 $('#insuctions').hide(300);
+    	 $('#instructions').hide(300);
     	}
     	
     }
