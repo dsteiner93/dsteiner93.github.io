@@ -5,8 +5,8 @@ $(document).ready(function() {
     $("#gameArea").hide();
     $("#demoCanvas").hide();
     $("#center").hide();
-    $("#menubox").hide();
-    $('#nav2').hide();
+    $("#right_nav").hide();
+    $('#left_nav').hide();
     $('#bubbleSmall').hide();
     $("#pause").hide();
     //setInterval(function(){changeTitleColor()}, 1000)
@@ -27,17 +27,16 @@ function showCanvas() {
     $("#instructions").fadeOut(200);
     $("#players").fadeToggle(200);
 
-
     setTimeout(function() {
         $("#bubbleBig").fadeOut(100);
     }, 200);
 
     setTimeout(function() {
-        $("#bubbleSmall").fadeIn(400);
+        $("#bubbleSmall").fadeIn(300);
         $("#center").fadeIn(300);
-        $("#menubox").fadeIn(300);
-        $("#menubox").fadeIn(300);
-        $("#nav2").fadeIn(300);
+        $("#right_nav").fadeIn(300);
+        $("#box").fadeIn(300);
+        $("#left_nav").fadeIn(300);
     }, 400);
 
     setTimeout(function() {

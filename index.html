@@ -13,18 +13,18 @@
     </head>
     <body>
         <nav>
-            <div id='menubox'>
-                <div class="menu">
+            <div id='left_nav'>
+                <div class="box">
                     <p> Current Score </p>
-                    <p class='info' id='currentScore'> 0 </p>
+                    <p id='currentScore'> 0 </p>
                 </div>
-                <div class="menu">
-                    <p> High Score </p>
+                <div class="box">
+                    <p id="high_score"> High Score </p>
                     <p class='info' id='highScore'> 0 </p>
                 </div>
             </div>
         </nav>
-        <div id="container">
+        <div id="main_container">
             <div id='title'>
                 <h1 id='bubbleBig'>Puyo Pop</h1>
                 <h1 id='bubbleSmall'>Puyo Pop</h1>
@@ -43,27 +43,25 @@
                     <button class="btn" id='p2' onclick="warning()"> Two Player</button>
                 </div>
                 <p id ='instructions'> 
-                       Instuctions <\br> 
-                       ....
-                   </p>
+                    Instuctions
+                </p>
                 <div id="center">
                     <canvas id="demoCanvas" width="300" height="600" style="background-color: #D3D3D3;">
                         alternate content
                     </canvas>
-                    <p id='pause'> Press P to Pause and I for Instructions </p>
+                    <p id='pause'> Press P to Pause and to Read Instructions </p>
                 </div>
             </div>
         </div>
-        <nav id='nav2'>
-            <div id='menubox2'>
-                <div class="menu">
-                    <p> Timer </p>
-                    <p class='info' id ='time'> 0 </p>
-                    </span>
-                </div>
-                <div class="menu">
-                    <button id='reset' onclick='resetGame()'> Reset </button>
-                </div>
+        <nav id='right_nav'>
+            <div class="box">
+                <p id ='next_block_text'> Next Block: </p>
+                <canvas id='next_block'></canvas>
+                <p id='timer'> Timer </p>
+                <p id ='time'> 0 </p>
+            </div>
+            <div class="box">
+                <button id='reset' onclick='resetGame()'> Reset </button>
             </div>
         </nav>
     </body>

@@ -43,7 +43,7 @@ nav {
     color: #CC0000;
 }
 
-#container {
+#main_container {
     float: left;
     padding-top: 10px;
     margin-left: auto;
@@ -90,7 +90,7 @@ body {
     padding: 0;
 }
 
-.menu {
+.box {
     margin-top: 50px;
     text-align: center;
     width: 150px;
@@ -99,11 +99,11 @@ body {
     padding: 10px;
 }
 
-#menubox {
+#left_nav {
     float: right;
 }
 
-#menubox2 {
+#right_nav {
     width: 150px;
 }
 
@@ -145,4 +145,24 @@ body {
     margin-left:auto;
     margin-right:auto;
     padding-top: 30px;
+}
+
+#next_block{
+    background-color: black;
+    width: 70px;
+    height: 120px;
+    margin: 0;
+    padding: 0;
+    border: 2px solid;
+    border-radius: 25px;
+    background-color: #D3D3D3;
+    
+}
+
+#timer{
+    margin-top: 80px;
+}
+
+#hs{
+    margin-top: 110px;
 }

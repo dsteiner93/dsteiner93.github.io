@@ -1,4 +1,6 @@
    var fallInterval = 40; //interval (in ticks) at which the block falls
+   var nextBlock;
+   var nextBlock_Stage;
    var currentBlock;
    //var nextColor1 = generateColor();
    //var nextColor2 = generateColor();
@@ -94,6 +96,7 @@
    function init() {
        startTimer();
        stage = new createjs.Stage("demoCanvas");
+       nextBlock_Stage = new createjs.Stage("next_Block");
        var counter = 0;
        var keyBuffer = 0;
        var rotateBuffer = 0;
@@ -109,9 +112,9 @@
        currentBlock = generateBlock();
        currentPair = new pair(currentBlock);
        stage.addChild(currentBlock);
+       
        createjs.Ticker.setFPS(30)
        if (!hasBeenSet) {
-
            createjs.Ticker.addEventListener("tick", tick);
            hasBeenSet = true;
        }
@@ -597,20 +600,7 @@
    }
    
 window.addEventListener("keydown", function(e){
-    
-    if(e.keyCode == 80) {
-    
-    	if(!createjs.Ticker.getPaused()){
-    	createjs.Ticker.setPaused(true);
-    	clearTimeout(timer);
-    	} else{
-    	 createjs.Ticker.setPaused(false);
-    	 $('#instructions').fadeOut(300);
-    	 startTimer();
-    	}
-    
-    }
-    if(e.keyCode == 73){
+    if(e.keyCode == 80){
     
     	if(!createjs.Ticker.getPaused()){
     	createjs.Ticker.setPaused(true);
