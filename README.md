@@ -12,9 +12,9 @@ General improvements I (David) think could be made {
 
 -The game should not speed up so fast
 
--Add a preview of the next two blocks
+-Add a preview of the next two blocks UP NEXT
 
--Add score features
+-Add score features DONE
 
 -Make it look prettier
 
