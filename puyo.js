@@ -27,46 +27,50 @@
        thisPair.rotatable = block.getChildAt(1);
        thisPair.orientation = 12; //orientation based on clock face, starts at 12 O'clock
        thisPair.rotateCW = function rotateCW() {
-           if (thisPair.orientation == 12 && thisPair.block.x + thisPair.rotatable.x + 50 <= width - radius) {
-               thisPair.rotatable.x += 50;
-               thisPair.rotatable.y += 50;
-               thisPair.orientation = 3;
-           } else if (thisPair.orientation == 3) {
-               thisPair.rotatable.x -= 50;
-               thisPair.rotatable.y += 50;
-               thisPair.orientation = 6;
-           } else if (thisPair.orientation == 6 && thisPair.block.x + thisPair.rotatable.x - 50 >= radius) {
-               thisPair.rotatable.x -= 50;
-               thisPair.rotatable.y -= 50;
-               thisPair.orientation = 9;
-           } else if (thisPair.orientation == 9) {
-               thisPair.rotatable.x += 50;
-               thisPair.rotatable.y -= 50;
-               thisPair.orientation = 12;
-           }
-           console.log(thisPair.rotatable.x);
-           console.log(thisPair.rotatable.y);
-       }
+		var rotatableX = block.getChildAt(1).x + block.x;
+        	var rotatableY = block.getChildAt(1).y + block.y;
+		if (thisPair.orientation == 12 && thisPair.block.x + thisPair.rotatable.x + 50 <= width - radius
+		&& !gameGrid[yToArray(rotatableY)][xToArray(rotatableX + 50)].occupied) {
+		       thisPair.rotatable.x += 50;
+        	       thisPair.rotatable.y += 50;
+        	       thisPair.orientation = 3;
+           	} else if (thisPair.orientation == 3) {
+               		thisPair.rotatable.x -= 50;
+               		thisPair.rotatable.y += 50;
+               		thisPair.orientation = 6;
+	        } else if (thisPair.orientation == 6 && thisPair.block.x + thisPair.rotatable.x - 50 >= radius
+			&& !gameGrid[yToArray(rotatableY)][xToArray(rotatableX - 50)].occupied) {
+        	  	thisPair.rotatable.x -= 50;
+        	 	thisPair.rotatable.y -= 50;
+               		thisPair.orientation = 9;
+           	} else if (thisPair.orientation == 9) {
+               		thisPair.rotatable.x += 50;
+               		thisPair.rotatable.y -= 50;
+               		thisPair.orientation = 12;
+           	}
+       	}
        thisPair.rotateCCW = function rotateCCW() {
-           if (thisPair.orientation == 12 && thisPair.block.x + thisPair.rotatable.x - 50 >= radius) {
-               thisPair.rotatable.x -= 50;
-               thisPair.rotatable.y += 50;
-               thisPair.orientation = 9;
-           } else if (thisPair.orientation == 9) {
-               thisPair.rotatable.x += 50;
-               thisPair.rotatable.y += 50;
-               thisPair.orientation = 6;
-           } else if (thisPair.orientation == 6 && thisPair.block.x + thisPair.rotatable.x + 50 <= width - radius) {
-               thisPair.rotatable.x += 50;
-               thisPair.rotatable.y -= 50;
-               thisPair.orientation = 3;
-           } else if (thisPair.orientation == 3) {
-               thisPair.rotatable.x -= 50;
-               thisPair.rotatable.y -= 50;
-               thisPair.orientation = 12;
+		var rotatableX = block.getChildAt(1).x + block.x;
+           	var rotatableY = block.getChildAt(1).y + block.y;
+           	if (thisPair.orientation == 12 && thisPair.block.x + thisPair.rotatable.x - 50 >= radius
+		   && !gameGrid[yToArray(rotatableY)][xToArray(rotatableX - 50)].occupied) {
+               		thisPair.rotatable.x -= 50;
+               		thisPair.rotatable.y += 50;
+               		thisPair.orientation = 9;
+           	} else if (thisPair.orientation == 9) {
+               		thisPair.rotatable.x += 50;
+               		thisPair.rotatable.y += 50;
+               		thisPair.orientation = 6;
+           	} else if (thisPair.orientation == 6 && thisPair.block.x + thisPair.rotatable.x + 50 <= width - radius
+		   && !gameGrid[yToArray(rotatableY)][xToArray(rotatableX + 50)].occupied) {
+               		thisPair.rotatable.x += 50;
+               		thisPair.rotatable.y -= 50;
+               		thisPair.orientation = 3;
+           	} else if (thisPair.orientation == 3) {
+               		thisPair.rotatable.x -= 50;
+               		thisPair.rotatable.y -= 50;
+               		thisPair.orientation = 12;
            }
-           console.log(thisPair.rotatable.x);
-           console.log(thisPair.rotatable.y);
        }
    }
    var space = function() { //each space keeps track of occupancy and occupant
