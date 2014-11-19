@@ -113,13 +113,8 @@
        currentBlock = generateBlock();
        currentPair = new pair(currentBlock);
        stage.addChild(currentBlock);
-       
-              nextBlock = generateBlock();
-              nextBlock.x = 152;
-              nextBlock.y = 105;
-              nextBlock.scaleX = 4.3;
-              nextBlock.scaleY = 1.2;
-              nextBlock_Stage.addChild(nextBlock);
+       nextBlock = generateBlock();
+             showNextBlock(nextBlock);
        
        createjs.Ticker.setFPS(30)
        if (!hasBeenSet) {
@@ -284,12 +279,31 @@
                updateGroups(block.getChildAt(0));
                updateGroups(block.getChildAt(1));
                updateBoard(0);
-
-               currentBlock = generateBlock();
-               currentPair = new pair(currentBlock);
-               //speedUp(); uncomment this later
-               stage.addChild(currentBlock);
+               
+               addCurrentBlockToStage(nextBlock);
            }
+       }
+       
+        function showNextBlock(block){
+              nextBlock.x = 152;
+              nextBlock.y = 105;
+              nextBlock.scaleX = 4.3;
+              nextBlock.scaleY = 1.2;
+              nextBlock_Stage.addChild(nextBlock);
+             
+       }
+       
+       function addCurrentBlockToStage(block){
+             block.x = 175;
+             block.y = 25;
+             block.scaleX = 1;
+             block.scaleY = 1;
+             currentBlock = block;
+             currentPair = new pair(currentBlock);
+             speedUp(); 
+             stage.addChild(block);
+             nextBlock = generateBlock();
+             showNextBlock(nextBlock);
        }
 
        function moveLeft(block) {
