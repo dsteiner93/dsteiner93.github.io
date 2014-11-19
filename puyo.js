@@ -29,49 +29,45 @@
        thisPair.rotatable = block.getChildAt(1);
        thisPair.orientation = 12; //orientation based on clock face, starts at 12 O'clock
        thisPair.rotateCW = function rotateCW() {
-		var rotatableX = block.getChildAt(1).x + block.x;
-        	var rotatableY = block.getChildAt(1).y + block.y;
-		if (thisPair.orientation == 12 && thisPair.block.x + thisPair.rotatable.x + 50 <= width - radius
-		&& !gameGrid[yToArray(rotatableY)][xToArray(rotatableX + 50)].occupied) {
-		       thisPair.rotatable.x += 50;
-        	       thisPair.rotatable.y += 50;
-        	       thisPair.orientation = 3;
-           	} else if (thisPair.orientation == 3) {
-               		thisPair.rotatable.x -= 50;
-               		thisPair.rotatable.y += 50;
-               		thisPair.orientation = 6;
-	        } else if (thisPair.orientation == 6 && thisPair.block.x + thisPair.rotatable.x - 50 >= radius
-			&& !gameGrid[yToArray(rotatableY)][xToArray(rotatableX - 50)].occupied) {
-        	  	thisPair.rotatable.x -= 50;
-        	 	thisPair.rotatable.y -= 50;
-               		thisPair.orientation = 9;
-           	} else if (thisPair.orientation == 9) {
-               		thisPair.rotatable.x += 50;
-               		thisPair.rotatable.y -= 50;
-               		thisPair.orientation = 12;
-           	}
-       	}
+           var rotatableX = block.getChildAt(1).x + block.x;
+           var rotatableY = block.getChildAt(1).y + block.y;
+           if (thisPair.orientation == 12 && thisPair.block.x + thisPair.rotatable.x + 50 <= width - radius && !gameGrid[yToArray(rotatableY)][xToArray(rotatableX + 50)].occupied) {
+               thisPair.rotatable.x += 50;
+               thisPair.rotatable.y += 50;
+               thisPair.orientation = 3;
+           } else if (thisPair.orientation == 3) {
+               thisPair.rotatable.x -= 50;
+               thisPair.rotatable.y += 50;
+               thisPair.orientation = 6;
+           } else if (thisPair.orientation == 6 && thisPair.block.x + thisPair.rotatable.x - 50 >= radius && !gameGrid[yToArray(rotatableY)][xToArray(rotatableX - 50)].occupied) {
+               thisPair.rotatable.x -= 50;
+               thisPair.rotatable.y -= 50;
+               thisPair.orientation = 9;
+           } else if (thisPair.orientation == 9) {
+               thisPair.rotatable.x += 50;
+               thisPair.rotatable.y -= 50;
+               thisPair.orientation = 12;
+           }
+       }
        thisPair.rotateCCW = function rotateCCW() {
-		var rotatableX = block.getChildAt(1).x + block.x;
-           	var rotatableY = block.getChildAt(1).y + block.y;
-           	if (thisPair.orientation == 12 && thisPair.block.x + thisPair.rotatable.x - 50 >= radius
-		   && !gameGrid[yToArray(rotatableY)][xToArray(rotatableX - 50)].occupied) {
-               		thisPair.rotatable.x -= 50;
-               		thisPair.rotatable.y += 50;
-               		thisPair.orientation = 9;
-           	} else if (thisPair.orientation == 9) {
-               		thisPair.rotatable.x += 50;
-               		thisPair.rotatable.y += 50;
-               		thisPair.orientation = 6;
-           	} else if (thisPair.orientation == 6 && thisPair.block.x + thisPair.rotatable.x + 50 <= width - radius
-		   && !gameGrid[yToArray(rotatableY)][xToArray(rotatableX + 50)].occupied) {
-               		thisPair.rotatable.x += 50;
-               		thisPair.rotatable.y -= 50;
-               		thisPair.orientation = 3;
-           	} else if (thisPair.orientation == 3) {
-               		thisPair.rotatable.x -= 50;
-               		thisPair.rotatable.y -= 50;
-               		thisPair.orientation = 12;
+           var rotatableX = block.getChildAt(1).x + block.x;
+           var rotatableY = block.getChildAt(1).y + block.y;
+           if (thisPair.orientation == 12 && thisPair.block.x + thisPair.rotatable.x - 50 >= radius && !gameGrid[yToArray(rotatableY)][xToArray(rotatableX - 50)].occupied) {
+               thisPair.rotatable.x -= 50;
+               thisPair.rotatable.y += 50;
+               thisPair.orientation = 9;
+           } else if (thisPair.orientation == 9) {
+               thisPair.rotatable.x += 50;
+               thisPair.rotatable.y += 50;
+               thisPair.orientation = 6;
+           } else if (thisPair.orientation == 6 && thisPair.block.x + thisPair.rotatable.x + 50 <= width - radius && !gameGrid[yToArray(rotatableY)][xToArray(rotatableX + 50)].occupied) {
+               thisPair.rotatable.x += 50;
+               thisPair.rotatable.y -= 50;
+               thisPair.orientation = 3;
+           } else if (thisPair.orientation == 3) {
+               thisPair.rotatable.x -= 50;
+               thisPair.rotatable.y -= 50;
+               thisPair.orientation = 12;
            }
        }
    }
@@ -97,7 +93,7 @@
        startTimer();
        stage = new createjs.Stage("demoCanvas");
        nextBlock_Stage = new createjs.Stage("next_block");
-      nextBlock_Stage
+       nextBlock_Stage
        var counter = 0;
        var keyBuffer = 0;
        var rotateBuffer = 0;
@@ -114,8 +110,8 @@
        currentPair = new pair(currentBlock);
        stage.addChild(currentBlock);
        nextBlock = generateBlock();
-             showNextBlock(nextBlock);
-       
+       showNextBlock(nextBlock);
+
        createjs.Ticker.setFPS(30)
        if (!hasBeenSet) {
            createjs.Ticker.addEventListener("tick", tick);
@@ -123,57 +119,57 @@
        }
 
        createjs.Ticker.addEventListener("tick", stage);
-       
+
        createjs.Ticker.addEventListener("tick", nextBlock_Stage);
 
        function tick(event) {
-       	if(!createjs.Ticker.getPaused()){
-           fallingBlock(currentBlock);
-           if (keyBuffer == 0) {
-               if (key.isPressed('left') && !hitFloor(currentBlock)) {
-                   moveLeft(currentBlock);
-                   keyBuffer++;
-                   stage.update();
-               }
-               if (key.isPressed('right') && !hitFloor(currentBlock)) {
-                   moveRight(currentBlock);
-                   keyBuffer++;
-                   stage.update();
-               }
-               if (key.isPressed('down')) {
-                   moveDown(currentBlock);
-                   keyBuffer++;
-                   stage.update();
-               }
+           if (!createjs.Ticker.getPaused()) {
+               fallingBlock(currentBlock);
+               if (keyBuffer == 0) {
+                   if (key.isPressed('left') && !hitFloor(currentBlock)) {
+                       moveLeft(currentBlock);
+                       keyBuffer++;
+                       stage.update();
+                   }
+                   if (key.isPressed('right') && !hitFloor(currentBlock)) {
+                       moveRight(currentBlock);
+                       keyBuffer++;
+                       stage.update();
+                   }
+                   if (key.isPressed('down')) {
+                       moveDown(currentBlock);
+                       keyBuffer++;
+                       stage.update();
+                   }
 
-           }
-           if (rotateBuffer == 0) {
-               if ((key.isPressed('x') || key.isPressed('up')) && !hitFloor(currentBlock)) {
-                   currentPair.rotateCCW();
-                   console.log('x pressed');
+               }
+               if (rotateBuffer == 0) {
+                   if ((key.isPressed('x') || key.isPressed('up')) && !hitFloor(currentBlock)) {
+                       currentPair.rotateCCW();
+                       console.log('x pressed');
+                       rotateBuffer++;
+                       stage.update();
+                   }
+                   if (key.isPressed('z') && !hitFloor(currentBlock)) {
+                       currentPair.rotateCW();
+                       console.log('z pressed');
+                       rotateBuffer++;
+                       stage.update();
+                   }
+               }
+               if (keyBuffer != 0) { //prevents keypress from registering too quickly: it's a bit clunky right now
+                   keyBuffer++;
+                   if (keyBuffer == 6) {
+                       keyBuffer = 0;
+                   }
+               }
+               if (rotateBuffer != 0) {
                    rotateBuffer++;
-                   stage.update();
-               }
-               if (key.isPressed('z') && !hitFloor(currentBlock)) {
-                   currentPair.rotateCW();
-                   console.log('z pressed');
-                   rotateBuffer++;
-                   stage.update();
+                   if (rotateBuffer == 8) {
+                       rotateBuffer = 0;
+                   }
                }
            }
-           if (keyBuffer != 0) { //prevents keypress from registering too quickly: it's a bit clunky right now
-               keyBuffer++;
-               if (keyBuffer == 6) {
-                   keyBuffer = 0;
-               }
-           }
-           if (rotateBuffer != 0) {
-               rotateBuffer++;
-               if (rotateBuffer == 8) {
-                   rotateBuffer = 0;
-               }
-           }
-       	}
        }
 
        function generateBlock() { //creates a new block of two icon
@@ -205,13 +201,13 @@
 
        function generateColor() {
            var x = Math.random();
-		   //I'm only changing so I can debug easier (easier for me to read "blue" than "#00B2EE" in debugger
+           //I'm only changing so I can debug easier (easier for me to read "blue" than "#00B2EE" in debugger
            /*if (x < .20) return "#F59D92"; //red
            else if (x < .40) return "#BF5FFF"; // purple
            else if (x < .60) return "#00B2EE"; // blue
            else if (x < .80) return "#6CFFD9"; // greenish
            else return "#DAF5A5"; //yellow*/
-		   if (x < .20) return "blue"; //red
+           if (x < .20) return "blue"; //red
            else if (x < .40) return "green"; // purple
            else if (x < .60) return "purple"; // blue
            else if (x < .80) return "orange"; // greenish
@@ -279,31 +275,31 @@
                updateGroups(block.getChildAt(0));
                updateGroups(block.getChildAt(1));
                updateBoard(0);
-               
+
                addCurrentBlockToStage(nextBlock);
            }
        }
-       
-        function showNextBlock(block){
-              nextBlock.x = 152;
-              nextBlock.y = 105;
-              nextBlock.scaleX = 4.3;
-              nextBlock.scaleY = 1.2;
-              nextBlock_Stage.addChild(nextBlock);
-             
+
+       function showNextBlock(block) {
+           nextBlock.x = 152;
+           nextBlock.y = 105;
+           nextBlock.scaleX = 4.3;
+           nextBlock.scaleY = 1.2;
+           nextBlock_Stage.addChild(nextBlock);
+
        }
-       
-       function addCurrentBlockToStage(block){
-             block.x = 175;
-             block.y = 25;
-             block.scaleX = 1;
-             block.scaleY = 1;
-             currentBlock = block;
-             currentPair = new pair(currentBlock);
-             speedUp(); 
-             stage.addChild(block);
-             nextBlock = generateBlock();
-             showNextBlock(nextBlock);
+
+       function addCurrentBlockToStage(block) {
+           block.x = 175;
+           block.y = 25;
+           block.scaleX = 1;
+           block.scaleY = 1;
+           currentBlock = block;
+           currentPair = new pair(currentBlock);
+           speedUp();
+           stage.addChild(block);
+           nextBlock = generateBlock();
+           showNextBlock(nextBlock);
        }
 
        function moveLeft(block) {
@@ -349,25 +345,24 @@
            var i;
            var j;
            for (i = 0; i < globalGroups.length; i++) { //for each group, check if >=4
-			   if(globalGroups[i] != null){
-				   if (globalGroups[i].size >= 4) {
-					   changed = 1;
-					   updateScore(globalGroups[i].size);
-					   for (j = 0; j < globalGroups[i].elements.length; j++) { //delete every element in the group
-						   var x = globalGroups[i].elements[j].specialX;
-						   var y = globalGroups[i].elements[j].specialY;
-						   gameGrid[y][x] = new space();
-						   globalGroups[i].elements[j].parent.removeChild(globalGroups[i].elements[j]);
-					   }
-					   //Delete the item from the array of groups
-					   globalGroups.splice(i, 1);
-				   }
-				   else if(globalGroups[i].size <= 0){
-					//Delete from the array of groups
-					   globalGroups.splice(i, 1);
-				   }
-			   }
-		   }
+               if (globalGroups[i] != null) {
+                   if (globalGroups[i].size >= 4) {
+                       changed = 1;
+                       updateScore(globalGroups[i].size);
+                       for (j = 0; j < globalGroups[i].elements.length; j++) { //delete every element in the group
+                           var x = globalGroups[i].elements[j].specialX;
+                           var y = globalGroups[i].elements[j].specialY;
+                           gameGrid[y][x] = new space();
+                           globalGroups[i].elements[j].parent.removeChild(globalGroups[i].elements[j]);
+                       }
+                       //Delete the item from the array of groups
+                       globalGroups.splice(i, 1);
+                   } else if (globalGroups[i].size <= 0) {
+                       //Delete from the array of groups
+                       globalGroups.splice(i, 1);
+                   }
+               }
+           }
            if (changed == 1) condenseColumns(); //If a group was deleted, we'll need to update the board again
        }
 
@@ -393,14 +388,14 @@
                        gameGrid[z][x].circle.specialY = q;
                        gameGrid[z][x].circle.y += 2 * radius * (q - z);
                        gameGrid[q][x].setCircle(gameGrid[z][x].circle); //if you found one, swap it in
-                       
-					   //When a circle is moved, it might not be in its previous group anymore, so remove it
-					   gameGrid[q][x].circle.group.size = gameGrid[q][x].circle.group.size - 1;
-					   var index = gameGrid[q][x].circle.group.elements.indexOf(gameGrid[q][x].circle);
-					   if (index > -1) {
-							gameGrid[q][x].circle.group.elements.splice(index, 1);
-					   }
-					   gameGrid[q][x].circle.group = null;
+
+                       //When a circle is moved, it might not be in its previous group anymore, so remove it
+                       gameGrid[q][x].circle.group.size = gameGrid[q][x].circle.group.size - 1;
+                       var index = gameGrid[q][x].circle.group.elements.indexOf(gameGrid[q][x].circle);
+                       if (index > -1) {
+                           gameGrid[q][x].circle.group.elements.splice(index, 1);
+                       }
+                       gameGrid[q][x].circle.group = null;
                        updateGroups(gameGrid[q][x].circle);
                        gameGrid[z][x] = new space();
                    }
@@ -536,13 +531,13 @@
            }
            group1.size = size;
            group1.elements = mergedEls;
-		   var j;
-		   //delete group2 from globalGroups
-		   for(j = 0; j<globalGroups.length; j++){
-				if(group2.id == globalGroups[j].id){
-					globalGroups.splice(j, 1);
-				}
-		   }
+           var j;
+           //delete group2 from globalGroups
+           for (j = 0; j < globalGroups.length; j++) {
+               if (group2.id == globalGroups[j].id) {
+                   globalGroups.splice(j, 1);
+               }
+           }
        }
 
        function group(id, color, size, elements) {
@@ -618,25 +613,25 @@
        currentTime = 0;
        init();
    }
-   
-   function warning(){
-   	alert('Two Player is still under development. Please Use One Player.')
+
+   function warning() {
+       alert('Two Player is still under development. Please Use One Player.')
    }
-   
-window.addEventListener("keydown", function(e){
-    if(e.keyCode == 80){
-    
-    	if(!createjs.Ticker.getPaused()){
-    	createjs.Ticker.setPaused(true);
-    	$('#instructions').fadeIn(300);
-    	clearTimeout(timer);
-    	} else{
-    	 createjs.Ticker.setPaused(false);
-    	 $('#instructions').fadeOut(300);
-    	 startTimer();
-    	 
-    	}
-    	
-    }
-    e.preventDefault();
-});
+
+   window.addEventListener("keydown", function(e) {
+       if (e.keyCode == 80) {
+
+           if (!createjs.Ticker.getPaused()) {
+               createjs.Ticker.setPaused(true);
+               $('#instructions').fadeIn(300);
+               clearTimeout(timer);
+           } else {
+               createjs.Ticker.setPaused(false);
+               $('#instructions').fadeOut(300);
+               startTimer();
+
+           }
+
+       }
+       e.preventDefault();
+   });

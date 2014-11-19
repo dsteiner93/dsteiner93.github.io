@@ -44,7 +44,7 @@ function showCanvas() {
     }, 600);
 
     setTimeout(function() {
-        $('#instructions').css('background-color', 'white');
+        $('#instructions').css('background-color', '#D3D3D3');
         $("#pause").fadeIn(100);
     }, 1000);
 };
