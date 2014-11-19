@@ -215,7 +215,7 @@
            else if (x < .40) return "green"; // purple
            else if (x < .60) return "purple"; // blue
            else if (x < .80) return "orange"; // greenish
-           else return "pink";
+           else return "DeepPink";
        }
 
        function fallingBlock(block) {
@@ -628,14 +628,13 @@ window.addEventListener("keydown", function(e){
     
     	if(!createjs.Ticker.getPaused()){
     	createjs.Ticker.setPaused(true);
-    //	$('#instructions').css('background-color: white');
     	$('#instructions').fadeIn(300);
     	clearTimeout(timer);
     	} else{
     	 createjs.Ticker.setPaused(false);
     	 $('#instructions').fadeOut(300);
     	 startTimer();
-    	 //$('#instructions').css('background-color: none');
+    	 
     	}
     	
     }

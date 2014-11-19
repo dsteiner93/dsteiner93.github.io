@@ -144,7 +144,10 @@ body {
     right:0;
     margin-left:auto;
     margin-right:auto;
-    padding-top: 30px;
+    width: 280px;
+    margin-top: 30px;
+   border-radius: 5px;
+    opacity: 0.8;
 }
 
 #next_block{
