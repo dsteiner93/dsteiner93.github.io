@@ -563,10 +563,10 @@
 
    function speedUp() {
        console.log(numberOfBlocksUsed);
-       if (numberOfBlocksUsed % 4 == 0 && fallInterval > 5) { //speed increases every 4th block
-           fallInterval = fallInterval - 5;
+       if (numberOfBlocksUsed % 6 == 0 && fallInterval > 5) { //speed increases every 6th block
+           fallInterval = fallInterval - 2;
        }
-       if (numberOfBlocksUsed % 50 == 0 && fallInterval > 3) { // 50th block reaches max speed
+       if (numberOfBlocksUsed % 96 == 0 && fallInterval > 3) { // 96th block reaches max speed
            fallInterval = fallInterval - 1;
        }
        console.log(fallInterval);
