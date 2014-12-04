@@ -7,8 +7,8 @@
  */
 
 $host= 'classroom.cs.unc.edu';
-$user= 'siedleck';
-$pwd= 'pDragon5';
+$user= 'username';
+$pwd= 'password';
 
 $db;
 //$db = new PDO("mysql:host=$host_name;dbname=db", $user_name, $pass_word);
