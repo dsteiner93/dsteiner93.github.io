@@ -149,3 +149,14 @@ input{
     border-radius: 25px;
     padding: 10px;
 }
+
+td{ width: 33%; }
+
+table {border: none;
+outline:none;
+ border-collapse:collapse;}
+ 
+td, th {
+   border:none;
+   width: 33%;
+}
