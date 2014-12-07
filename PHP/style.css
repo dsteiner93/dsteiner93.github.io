@@ -66,10 +66,10 @@ input{
 
 #left{
     position: fixed;
-    top: 0;
+    top: 20px;
     right: 500px;
     left: 0;
-    bottom: 0;
+    
     margin: auto;
     width: 150px;
     height: 600px;
@@ -77,10 +77,10 @@ input{
 
 #right{
     position: fixed;
-    top: 0;
+    top: 20px;
     right: 0;
     left: 500px;
-    bottom: 0;
+ 
     margin: auto;
     width: 150px;
     height: 600px;
@@ -148,6 +148,7 @@ input{
     color: black;
     border-radius: 25px;
     padding: 10px;
+    
 }
 
 td{ width: 33%; }

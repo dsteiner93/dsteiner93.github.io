@@ -1,6 +1,6 @@
 <?php
 require_once 'init.php';
-
+session_start();
 class user {
   private $username;
   private $email;
@@ -42,12 +42,12 @@ class user {
     return null;
   }
   
-  public function updateEmail($email){
-    $this->email;
+  public function updateHigh_Score($score){
+    $this->high_score = $score;
     return $this->update();
   }
   
-  function findByUsername($username) {
+  public function findByUsername($username) {
 
     $query = $GLOBALS['db']->prepare("SELECT * FROM a6_User WHERE username = ?");
     
@@ -61,14 +61,15 @@ class user {
 	return null;
     }
     
-    return new user($data['user_id'],
-		    $data['username'],
+    
+    return new user($data['username'],
 		    $data['email'],
 		    $data['high_score'],
                     $data['password']);
     }
     
-    return null;
+
+    
   }
   
     public function getJSON() {
@@ -115,10 +116,16 @@ class user {
                                      password = ?
                                      WHERE username= ?");
 
-    $query->execute();
+    $query->execute(array($this->email,
+		    $this->high_score,
+		    $this->password,
+                    $this->username));
+    
+    if($query){
+        return $this->findByUsername($this->username);
+    }
    
-    return $data->fetchAll();
-   
+   return null;
    }
    
    public function isUnique($email, $type ){
@@ -135,6 +142,10 @@ class user {
                 }
                 
                 return false;
+   }
+   
+   public function getCurrentUser(){
+    return findByUsername( $_SESSION["username"]);
    }
    
 

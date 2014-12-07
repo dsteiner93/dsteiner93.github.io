@@ -5,7 +5,6 @@ require_once 'orm/User.php';
 
 $path_components = explode('/', $_SERVER['PATH_INFO']);
 
-//print($_SERVER['REQUEST_METHOD']);
 
 if ($_SERVER['REQUEST_METHOD'] == "GET") {
 
@@ -48,10 +47,29 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
 
 } else if($_SERVER['REQUEST_METHOD'] == "POST"){
     
+   // print((count($path_components) >= 2));
+   // print($path_components[1] != "");
    
-    if ((count($path_components) >= 2) &&
-      ($path_components[1] != "")) {
-
+    if ((count($path_components) >= 2) && ($path_components[1] != "")) {
+        
+        $user = User::findbyUsername($path_components[1]);
+        
+        if($user == null){
+             header("HTTP/1.0 400 Bad Request");
+            //print("Username No Found");
+            exit();
+        } else if(!is_numeric($_REQUEST['high_score'])){
+            header("HTTP/1.0 400 Bad Request");
+            //print("Not a Number");
+            exit();
+        }
+        
+        $score = $_REQUEST['high_score'];
+        $user->updateHigh_Score($score);
+        $_SESSION['high_score']=$score;
+        header("Content-type: application/json");
+        print($user->getJSON()); 
+        exit();
     
     //creates new
     } else{
@@ -104,12 +122,12 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     
     //Generate JSON encoding of new Todo
     header("Content-type: application/json");
-    print($new_user->getJSON());
+    print($new_user->getJSON()); 
     exit();
    
     }
     
-    //// Return JSON encoding of updated Todo
+    // Return JSON encoding of updated Todo
     //header("Content-type: application/json");
     //print($new_user->getJSON());
     //exit();

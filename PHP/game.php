@@ -99,6 +99,9 @@
             
            </div>
             
+            <form id='highscore_form'>
+                 <input id='hs' type="hidden" name="high_score"> 
+            </form>
      
 
     </body>

@@ -1,4 +1,4 @@
-   var fallInterval = 20; //interval (in ticks) at which the block falls
+   var fallInterval = 30; //interval (in ticks) at which the block falls
    var nextBlock;
    var nextBlock_Stage;
    var currentBlock;
@@ -18,6 +18,48 @@
    var currentTime = 0;
    var hasBeenSet = false;
    var stage;
+   var timer;
+var currentTime = 0;
+var url_base = 'http://wwwx.cs.unc.edu/Courses/comp426-f14/siedleck/a8/';
+var currentUser = setCurrentUser();
+
+$(document).ready(function() {
+  
+    
+  $('#register').on('submit',
+			       function (e) {
+				   e.preventDefault();
+				   $.ajax(url_base + "user.php",
+					  {type: "POST",
+						  dataType: "json",
+						  data: $(this).serialize(),
+						  success: function(todo_json, status, jqXHR) {
+                                                  currentUser = todo_json['username'];
+                                                  window.location=url_base +"game.php";
+					      },
+						  error: function(jqXHR, status, error) {
+						  alert(jqXHR.responseText);
+				    }});
+			       });
+   $('#login').on('submit',
+			       function (e) {
+                               
+				   e.preventDefault();
+				   $.ajax(url_base + "auth.php",
+					  {type: "POST",
+						  dataType: "json",
+						  data: $(this).serialize(),
+						  success: function(todo_json, status, jqXHR) {
+                                                   setCurrentUser(todo_json['username']);
+                                                  window.location=url_base +"game.php";
+					      },
+						  error: function(jqXHR, status, error) {
+						  alert(jqXHR.responseText);
+				    }});
+			       });
+  
+  
+});
 
    var floor = new Array(height - radius, height - radius, height - radius,
        height - radius, height - radius, height - radius); // an array that keeps track of the height of the blocks at each x-coord
@@ -88,8 +130,22 @@
            return thisSpace.occupied;
        }
    }
+   
+   function setCurrentUser(user){
+     $.ajax(url_base + "/auth.php",
+				{type: "GET",
+						  success: function(user, status, jqXHR) {
+                                                
+                                                  currentUser = user;
+					      },
+						  error: function(jqXHR, status, error) {
+						
+				    }});
+			    
+   }
 
    function init() {
+       $("#instructions").hide();
        startTimer();
        stage = new createjs.Stage("demoCanvas");
        nextBlock_Stage = new createjs.Stage("next_block");
@@ -562,11 +618,10 @@
    }
 
    function speedUp() {
-       console.log(numberOfBlocksUsed);
        if (numberOfBlocksUsed % 6 == 0 && fallInterval > 5) { //speed increases every 6th block
            fallInterval = fallInterval - 2;
        }
-       if (numberOfBlocksUsed % 96 == 0 && fallInterval > 3) { // 96th block reaches max speed
+       if (numberOfBlocksUsed % 100 == 0 && fallInterval > 8) { // 96th block reaches max speed
            fallInterval = fallInterval - 1;
        }
        console.log(fallInterval);
@@ -586,19 +641,21 @@
        
        if (currentScore > document.getElementById("high_score").innerHTML) {
            highScore = currentScore;
-           data = {'high_score': highScore};
+          // data = {'high_score': highScore};
            document.getElementById("high_score").innerHTML = highScore;
-            $.ajax({
-            type: "POST",
-            url: "update_highscore.php",
-            data: {high_score: highScore},
-            beforeSend: function() { 
-               
-            },
-            success: function(){ 
-           
-            }
-        });
+          $('#hs').val(highScore)
+          if (currentUser != "") {
+            $.ajax(url_base + "user.php" +"/"+currentUser,
+		{type: "POST",
+		dataType: "json",
+		 data: $('#highscore_form').serialize(),
+		success: function(todo_json, status, jqXHR) {
+		},
+		error: function(jqXHR, status, error) {
+		alert(jqXHR.responseText);
+	  }});
+          }
+	 
        }
 
    }
