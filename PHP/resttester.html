@@ -1,0 +1,84 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+     <title>Puyo Pop - COMP 426</title>
+     <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+     <link rel="stylesheet" type="text/css" href="style.css">
+     <script src="puyo.js"></script>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+</head>
+<body>
+    <a class='account' href='index.php'>Back</a>
+    
+    <div class='center'>
+    
+    <form id="restform">
+    <select id="methodselect" name=method>
+      <option value="GET">GET</option>
+      <option value="POST">POST</option>
+    </select>
+    <label> URL: <input style="width: 50em" type=text id=rest_url></label><br>
+    <div>
+    <h3>Parameters</h3>
+    <div id="params">
+    <div>Name: <input class='pname' type=text> Value: <input class='pval' type=text></div>
+    <div>Name: <input class='pname' type=text> Value: <input class='pval' type=text></div>
+    <div>Name: <input class='pname' type=text> Value: <input class='pval' type=text></div>
+    <div>Name: <input class='pname' type=text> Value: <input class='pval' type=text></div>
+    </div>
+    <button class='btn' style='margin-top: 10px;border: solid red 1px;' type=submit>Go</button></div>
+    </form>
+    <div style="margin-top: 50px;"> <u> Output </u> </div>
+    <p id='output' style="color: black;"> </p>
+
+    </div>
+    
+    <script>
+        
+    $(document).ready(function () {
+	$('#restform').on('submit', form_submit_handler);
+	$('#addparam').on('click', function () {
+		var new_param = $("<div>Name: <input class='pname' type=text> Value: <input class='pval' type=text></div>");
+		$('#params').append(new_param);
+	    });
+    });
+
+var form_submit_handler = function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    // Collect parameter name/value pairs as data
+    var data_pairs = {}
+    
+    $('#params div').each(function (i, e) {
+	    var pname = $.trim($(e).find('input.pname').val());
+	    if (pname != "") {
+		data_pairs[$(e).find('input.pname').val()] =
+ 		    $(e).find('input.pval').val();
+	    }
+	});
+		
+    // Get URL from rest_url text input
+    var ajax_url = $('#rest_url').val();
+
+    // Set up settings for AJAX call
+    var settings = {
+	type: $('#methodselect option:selected').val(),
+	data: data_pairs,
+	success: function(todo_json, status, jqXHR) {
+                     $('#output').text(JSON.stringify(todo_json));
+		 },
+	error: function(jqXHR, status, error) {
+		     alert(jqXHR.responseText);
+		    },
+	cache: false
+    }
+
+    // Make AJAX call
+    $.ajax(ajax_url, settings);
+};
+    </script>
+</body>
+</html>

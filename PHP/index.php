@@ -22,6 +22,7 @@
                 <div class='name'>Adam Wang </div>
                 <div class='name'>Volodymyr Siedlecki </div>
             </div>
+             <div style="margin-top: 20px"> <a href="resttester.html"> <button class='btn'>  Restful Tester </button> </a> </div>
             <div id='play'> 
                 <a href="game.php">   <button class="btn">  Play As Guest  </button> </a>
             </div>
