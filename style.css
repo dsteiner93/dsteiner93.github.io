@@ -4,7 +4,7 @@
 }
 
 #start {
-    border: solid #CC0000 1px;
+    border: solid #1947D1; 1px;
     margin-top: 20px;
 }
 
@@ -33,14 +33,16 @@ nav {
     width: 35%;
     float: left;
     padding: 10px;
-    color: #CC0000;
+    color: #1947D1;
+    /*color: #CC0000;*/
 }
 
 #nav2 {
     float: left;
     width: 35%;
     padding: 10px;
-    color: #CC0000;
+    color: #1947D1;
+    /*color: #CC0000;*/
 }
 
 #main_container {
@@ -50,8 +52,7 @@ nav {
     margin-right: auto;
     text-align: center;
     /*color: #CC0000;*/
-    /*color: #617CCE;*/
-    color:#1947D1;
+    color: #1947D1;
     width: 30%;
 }
 
@@ -117,11 +118,11 @@ body {
 }
 
 #p1 {
-    border: solid #CC0000 1px;
+    border: solid #1947D1; 1px;
 }
 
 #p2 {
-    border: solid #CC0000 1px;
+    border: solid #1947D1; 1px;
 }
 
 #players {
