@@ -31,18 +31,18 @@
             </div>
             <div id="members">
             
-        <div style="margin-top: 20px"> <a href="resttester.html"> <button class='btn'>  Restful Tester </button> </a> 
+        <div id='play'>
+            <a href="game.php">   <button class="btn btn-primary" onclick="showGame()">  Play as Guest  </button> </a>
+        </div>
+        <div style="margin-top: 20px"> <a href="resttester.html"> <button class='btn btn-info'>  Restful Tester </button> </a> 
         </div>
         <br>
-        <div id='play'>
-            <a href="game.php">   <button class="btn">  Play as Guest  </button> </a>
-        </div>
         <form id='register' method='post'>
             <h4> Sign Up </h4>
-            E-mail<br> <input  id='password' class='input' type='text' name='email' autocomplete=off><br>
+            Email<br> <input  id='password' class='input' type='text' name='email' autocomplete=off><br>
             Username<br> <input id='username' class='input' type='text' name='username' autocomplete=off ><br>
-            Password<br> <input  id='pwd' class='input' type='password' name='password'><br>
-            <input id='submit' class='btn' type='submit' value='Register' >
+            Password<br> <input  id='pwd' class='input' type='password' name='password'><br><br>
+            <input id='submit' class='btn btn-warning' type='submit' value='Register' >
         </form>
     </div>
    
