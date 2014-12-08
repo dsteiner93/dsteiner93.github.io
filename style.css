@@ -36,6 +36,9 @@ nav {
     color: #CC0000;
 }
 
+.navbar-nav > li > a {padding-top:10px !important; padding-bottom:10px !important;}
+.navbar {min-height:40px !important}
+
 #nav2 {
     float: left;
     width: 35%;
