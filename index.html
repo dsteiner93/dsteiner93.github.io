@@ -31,12 +31,13 @@
             </div>
             <div id="members">
             
+        <br>
         <div id='play'>
-            <a href="game.php">   <button class="btn btn-primary" onclick="showGame()">  Play as Guest  </button> </a>
+              <button class="btn btn-primary" onclick="showGame()">  Play as Guest  </button> 
         </div>
         <div style="margin-top: 20px"> <a href="resttester.html"> <button class='btn btn-info'>  Restful Tester </button> </a> 
         </div>
-        <br>
+        
         <form id='register' method='post'>
             <h4> Sign Up </h4>
             Email<br> <input  id='password' class='input' type='text' name='email' autocomplete=off><br>
@@ -51,7 +52,6 @@
     <p class="text-muted">Created by Volodymyr Siedlecki, David Steiner, and Adam Wang</p>
 </div>
 
-            <button class="btn" id='start' onclick="showGame()">PLAY</button>
             <div id="gameArea">
                 <div id='players'>
                     <button class="btn" id='p1' onclick="showCanvas();init();"> One Player</button>
