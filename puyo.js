@@ -173,6 +173,10 @@
        }
 
        function generateBlock() { //creates a new block of two icon
+            if (gameGrid[0][3].isOccupied())  {
+				   createjs.Ticker.setPaused(true);
+				   alert("Game Over");
+		      }
            var circle1 = new createjs.Shape();
            var circle2 = new createjs.Shape();
            circle1.color = generateColor();
@@ -236,6 +240,10 @@
                var child2y = block.getChildAt(1).y + y;
 
                if (currentPair.orientation == 12 || currentPair.orientation == 6) {
+                  if (gameGrid[1][3].isOccupied())  {
+						   createjs.Ticker.setPaused(true);
+						   alert("Game Over");
+					   } 	
                    gameGrid[yToArray(child1y)][xToArray(child1x)].setCircle(block.getChildAt(0));
                    block.getChildAt(0).specialY = yToArray(child1y);
                    block.getChildAt(0).specialX = xToArray(child1x);
@@ -598,6 +606,8 @@
    }
 
    function resetGame() {
+      if (createjs.Ticker.getPaused()) 
+			createjs.Ticker.setPaused(false);
        clearInterval(timer);
        currentTime = 0;
        currentScore = 0
