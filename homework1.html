@@ -43,11 +43,9 @@ function homework1 = homework1()
 			for b = -200:200
 				w = [w1(k) w2(j)];
 				decision = sign((w*examples).+b);
+				f = (w*examples).+b;
 				zero1loss = sum(decision ~= X3);
-				hingeLoss = 0;
-				for i = 1:numel(X3)
-					hingeLoss += max(0, 1-decision(i)*X3(i));
-				end
+				hingeLoss = sum(max(0, 1-f.*X3));
 				if(zero1loss < optimalLoss01) optimalLoss01 = zero1loss; end
 				if(hingeLoss < optimalLossHinge) optimalLossHinge = hingeLoss; end
 			end
@@ -74,7 +72,9 @@ end
 
 
 
-
 <h1> How are the results with 0-1 loss and hinge loss different? </h1>
 
-Hinge loss is double the 0-1 loss in this case, so the correct decision boundary ends up being the same.
+Hinge loss uses the value for f(x) instead of the decision sign(f(x)). <br>
+0-1 loss is piecewise constant, hinge loss is not. <br>
+Hinge loss is convex, allowing for easier optimization. <br>
+Hinge loss continues to increase even as the maximum number of misclassifications has been reached, unlike 0-1 loss.
