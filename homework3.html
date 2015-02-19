@@ -5,7 +5,9 @@
 <h2>Experiment 3</h2>
 <img src="media/experiment3.png">
 <img src="media/3real6noise.png">
+<br>
 <img src="media/3real7noise.png">
+<br>
 <img src="media/3real10noise.png">
 <img src="media/HighMagnitudeNoise.png">
 
@@ -21,9 +23,10 @@ number of features increases.
 When mirror variables are added, lasso would ignore them, while ridge would mirror them, as can be seen in the lassoBetas and
 ridgeBetas below. 
 
-As the number of noise variables increased, lasso and ridge appeared to have a slightly more difficult time 
+As the number of noise variables increased, lasso and ridge appeared to have a slightly more difficult time, but were still not very confused.
+Had the dataset been less straight-forward this could be a major problem, though. 
 
-As the magnitude of the nosie changed, the learning methods were not bothered.
+As the magnitude of the noise changed, the learning methods were not bothered.
 
 Linreg does fine on both training and test since it is obviously not capable of overfitting truly linear data, which is exactly what
 we have. The data I was using was not highly variable. (It is a linear combination of 3 features, with a small amount of randomness
@@ -507,8 +510,8 @@ function [ data ] = generate_noisy_data(muPos, sigPos, muNeg, sigNeg, m, p, q)
 %Experiment 1: Construct a data set with 3 meaningful features and 4
 %meaningless features (noise)
 
-noiseMean = 2*(muPos+muNeg)/2;
-sigNoise = 2*sigPos+sigNeg+muPos;
+noiseMean = (muPos+muNeg)/2;
+sigNoise = sigPos+sigNeg+muPos;
 d1m = .5+rand(); %Multiplier for feature 1
 d2m = .5+rand();
 d3m = .5+rand();
