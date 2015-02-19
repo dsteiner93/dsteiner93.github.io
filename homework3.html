@@ -10,7 +10,7 @@
 <img src="media/HighMagnitudeNoise.png">
 
 <pre>
-(Raw output data can be found below.)
+(Raw output data and source code can be found below. I will submit a zip of the MATLAB files if an assignment is created on Sakai)
 
 Commentary: 
 The steep drop-off in error after about 3 features is a strong indication that our data only has about 3 meaningful
@@ -18,7 +18,12 @@ features. The variance in the errors at the start has to do with whether or not 
 isn't very meaningful for that reason. Lasso, brute force, and ridge regression all converge to the same value here as the
 number of features increases. 
 
-When mirror variables are added, lasso would ignore them and 
+When mirror variables are added, lasso would ignore them, while ridge would mirror them, as can be seen in the lassoBetas and
+ridgeBetas below. 
+
+As the number of noise variables increased, lasso and ridge appeared to have a slightly more difficult time 
+
+As the magnitude of the nosie changed, the learning methods were not bothered.
 
 Linreg does fine on both training and test since it is obviously not capable of overfitting truly linear data, which is exactly what
 we have. The data I was using was not highly variable. (It is a linear combination of 3 features, with a small amount of randomness
@@ -425,6 +430,200 @@ lassoTestError =
 ridgeTestError =
 
     0.3859
+
+	
+	function [] = homework3()
+%COMP 790-134 Spring 2015
+%@author David Steiner
+%Experimenting with feature selection
+
+%Constants
+m = 300; %There are 2m total data points, split only for ease of changing to a classification problem
+p = 7; %Number of features total
+q = 4; %Number of meaningful features
+muPos = .7;
+sigPos = .3;
+muNeg = .2;
+sigNeg = .3;
+
+%Experiment 1: Construct a data set with 3 meaningful features and 4
+%meaningless features (noise)
+data = generate_noisy_data(muPos, sigPos, muNeg, sigNeg, m, p, q);
+%data = generate_real_mirror(muPos, sigPos, muNeg, sigNeg, m, p, q);
+%data = generate_fake_mirror(muPos, sigPos, muNeg, sigNeg, m, p, q);
+
+%Split traning set into traning (60%), validation (20%), and test (20%)
+trainEnd = round(2*m*.6);
+validationEnd = round(2*m*.8);
+testEnd  = size(data, 1);
+training = data(1:trainEnd, :);
+validation = data(trainEnd+1:validationEnd, :);
+test = data(validationEnd+1: testEnd, :);
+cols = size(training, 2);
+trainingData = training(:, 1:cols-1);
+trainLabels = training(:, cols);
+testData = test(:, 1:cols-1);
+testLabels = test(:, cols);
+
+%Calculate the errors associated with choosing best 1-7 features exhaustively
+bruteErrors = brute_force_features(trainingData, trainLabels, testData, testLabels, p);
+bruteErrors
+
+%Calculate the errors associated with choosing 0-7 features using lasso
+lassoBetas = lasso_by_features(trainingData, trainLabels)
+predictions = (testData * lassoBetas);
+lassoErrors = zeros(cols, 1);
+for i=1:cols
+  lassoErrors(i) = mean_squared_error(predictions(:, i), testLabels);
+end
+lassoErrors = lassoErrors(2:p+1) %Only care about features 1-7
+
+%Calcualate the errors associated with 0-7 features using ridge reg
+ridgeBetas = ridge_by_features(trainingData, trainLabels)
+testDataBias = [ones(size(testData,1),1) testData];
+predictions = (testDataBias * ridgeBetas);
+ridgeErrors = zeros(cols, 1);
+for i=1:cols
+  ridgeErrors(i) = mean_squared_error(predictions(:, i), testLabels);
+end
+ridgeErrors = ridgeErrors(1:p) %Only care about features 1-7
+
+plot([bruteErrors lassoErrors ridgeErrors])
+%title('Feature Selection Experiment: 3 real, 4 noise')
+title('Feature Selection Experiment: 3 real, 4 noise, increased magnitude noise');
+xlabel('Number of features')
+ylabel('Error')
+legend('Brute force', 'Lasso', 'Ridge')
+
+%Also, just fit the data with linreg, ridge reg, and lasso reg.
+%Report results on both training and test
+print_comparison(trainingData, trainLabels, testData, testLabels, p);
+
+end
+
+
+
+function [ data ] = generate_noisy_data(muPos, sigPos, muNeg, sigNeg, m, p, q)
+%Experiment 1: Construct a data set with 3 meaningful features and 4
+%meaningless features (noise)
+
+noiseMean = 2*(muPos+muNeg)/2;
+sigNoise = 2*sigPos+sigNeg+muPos;
+d1m = .5+rand(); %Multiplier for feature 1
+d2m = .5+rand();
+d3m = .5+rand();
+randomness = normrnd(.90, .3, 2*m, 1);
+%Randomness exists so the algorithm can't learn the features perfectly
+
+%X1, X2, X3 are meaningul, X4, X5, X6, and X7 are not
+positiveX1X2X3 = normrnd(muPos, sigPos, m, q); %Positive examples
+positiveNoise = normrnd(noiseMean, sigNoise, m, p-q);
+negativeX1X2X3 = normrnd(muNeg, sigNeg, m, q); %Negative examples
+negativeNoise = normrnd(noiseMean, sigNoise, m, p-q);
+data = [positiveX1X2X3 positiveNoise; negativeX1X2X3 negativeNoise];
+linComb = d1m*data(:,1)+d2m*data(:,2)+d3m*data(:,3);
+data = [data randomness.*linComb];
+%data = [positiveX1X2X3 positiveNoise ones(m, 1); negativeX1X2X3 negativeNoise zeros(m,1)];
+
+data = data(randperm(size(data,1)),:); %Randomly shuffle the order of our training examples
+data;
+
+end
+
+
+function [ testErrors ] = brute_force_features(train, trainLabels, test, testLabels, p)
+%Return the errors of the best features, selected by brute force
+
+beta = lasso(train, trainLabels, 'Alpha', 0.000001,'Lambda', [0]);
+trainErrors = 100000*ones(p, 1);
+testErrors = ones(p, 1);
+
+for i=1:p
+    %B = nchoosek(beta, i)
+    B = nchoosek([1 2 3 4 5 6 7], i);
+    for j=1:size(B, 1)
+        prediction =  train(:, B(j, :))*beta(B(j, :));
+        train_error = mean_squared_error(prediction, trainLabels);
+        if(train_error<trainErrors(i))
+            trainErrors(i) = train_error;
+            prediction = test(:, B(j, :))*beta(B(j, :));
+            testErrors(i) = mean_squared_error(prediction, testLabels);
+        end
+    end
+end
+trainErrors;
+testErrors;
+
+end
+
+
+function [ lassoBetas ] = lasso_by_features(trainingData, labels)
+%Returns a matrix of lasso betas, one column for each number of features
+cols = size(trainingData, 2);
+lassoBetas = zeros(cols, cols+1);
+x = 0;
+for i=1:cols+1
+   %This loop is not technically guaranteed to find betas for every number 
+   %of features, but it should
+   while(sum(lasso(trainingData, labels, 'Lambda', x)==0) ~= i-1)
+       if(sum(lasso(trainingData, labels, 'Lambda', x)==0) >= i-1)
+            x = x - .001;
+       end
+       if(sum(lasso(trainingData, labels, 'Lambda', x)==0) < i-1)
+            x = x + .001;
+       end
+   end
+   lassoBetas(:, i) = lasso(trainingData, labels, 'Lambda', x);
+end
+lassoBetas = fliplr(lassoBetas);
+
+end
+
+
+function [ ridgeBetas ] = ridge_by_features(trainingData, labels)
+%Returns a matrix of ridge betas, one column for each number of features
+cols = size(trainingData, 2);
+ridgeBetas = zeros(cols+1, cols+1);
+lambda = 1024; %Arbitrarily high reg term to try to shrink noise params
+for i=1:cols+1
+   A = ridge(labels, trainingData, lambda, 0);
+   temp = flipud(sort(A));
+   A(A<temp(i))=0; %Crude feature selection, setting smallest elements to 0
+   ridgeBetas(:, i) = A;
+   lambda = lambda/2; %Reduce regularization to "add" features
+end
+ridgeBetas;
+
+end
+
+function [] = print_comparison(trainingData, trainLabels, testData, testLabels, p)
+%I'm going to use an arbitrary lambda value. If the optimal were picked
+%based on cross-validation the results would probably be more similar
+%across regression methods
+lassoLambda = .01;
+ridgeLambda = 5;
+X = [ones(size(trainingData,1), 1) trainingData];
+testDataBias = [ones(size(testData,1),1) testData];
+linreg = pinv(X'*X)*X'*trainLabels
+lassoreg = lasso(trainingData, trainLabels, 'Lambda', [lassoLambda])
+ridgereg = inv(X'*X + ridgeLambda*eye(p+1))*X'*trainLabels
+
+lrTrain = (X * linreg);
+lasTrain = (trainingData * lassoreg);
+ridTrain = (X * ridgereg);
+lrTest = (testDataBias * linreg);
+lasTest = (testData * lassoreg);
+ridTest = (testDataBias * ridgereg);
+linregTrainError = mean_squared_error(lrTrain, trainLabels)
+lassoTrainError = mean_squared_error(lasTrain, trainLabels)
+ridgeTrainError = mean_squared_error(ridTrain, trainLabels)
+linregTestError = mean_squared_error(lrTest, testLabels)
+lassoTestError = mean_squared_error(lasTest, testLabels)
+ridgeTestError = mean_squared_error(ridTest, testLabels)
+
+end
+
+
 
 
 </pre>
