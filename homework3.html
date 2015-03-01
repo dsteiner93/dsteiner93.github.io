@@ -547,10 +547,10 @@ for i=1:p
     for j=1:size(B, 1)
         prediction =  train(:, B(j, :))*beta(B(j, :));
         train_error = mean_squared_error(prediction, trainLabels);
-        if(train_error<trainErrors(i))
+		if(train_error<trainErrors(i))
             trainErrors(i) = train_error;
             prediction = test(:, B(j, :))*beta(B(j, :));
-            testErrors(i) = mean_squared_error(prediction, testLabels);
+			testErrors(i) = mean_squared_error(prediction, testLabels);
         end
     end
 end
